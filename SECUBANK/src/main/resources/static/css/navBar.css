@@ -1,0 +1,39 @@
+
+/*.nav_bar{*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    width: 100%;*/
+/*    z-index: 1;*/
+/*    background-color: white;*/
+/*}*/
+
+.nav_bar{
+    width: 100%;
+    z-index: 1;
+    background-color: white;
+    top:0;
+    position: fixed;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+
+li a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 0 5px;
+}
+
+
+li{
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+

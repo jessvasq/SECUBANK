@@ -1,10 +1,10 @@
 
-    body{
-    margin: 10px;
-    }
-
     h1{
         text-align: center;
+    }
+
+    main{
+        margin-top: 60px;
     }
 
     .section1{
@@ -13,12 +13,18 @@
     }
 
     .account_card{
+        width: 15%;
         background-color: white;
         border: solid 1px rgba(226,226,226, 1);
-        padding: 0 40px 0 40px;
+        /*padding: 0 40px 0 40px;*/
         margin: 5px;
         border-radius: 8px;
+        text-align: left;
         box-shadow: rgba(0, 0, 0, 0.2) 0 6px 8px;
+    }
+
+    .account_card h3, h2, p {
+        margin-left: 15px;
     }
 
     .section2{
@@ -73,7 +79,14 @@
         border: solid 1px rgba(226,226,226, 1);;
         margin: 8px;
         border-radius: 5px;
+        margin-bottom: 5%;
     }
+
+    .article_container img{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
 
     p{
         color: grey;
