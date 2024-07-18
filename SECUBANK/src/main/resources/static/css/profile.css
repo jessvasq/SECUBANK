@@ -22,21 +22,13 @@ body {
 
 .l_section1{
     flex: 2;
-    padding: 20px;
+    padding: 40px;
 }
+
 .l_section1 h1{
     font-weight: bolder;
     font-size: 42px;
     text-align: center;
-}
-
-.l_section1 p{
-    color: rgba(144,147,134,0.73);
-}
-
-.f_section1{
-    display: flex;
-    width: 95%;
 }
 
 input::placeholder,
@@ -45,27 +37,9 @@ textarea::placeholder {
     color: rgba(196,199,184,0.73);
 }
 
-.f_group{
-    width: 100%;
-    text-align: left;
-    margin-bottom: 10px;
-}
 
-.f_group label{
-    font-weight: bold;
-    font-size: 14px;
-
-}
-
-form input{
-    display: flex;
-    flex-direction: column;
-    height: 30px;
-    border: solid 1px rgba(226,226,226, 1);
-    border-radius: 5px;
-    margin-top: 5px;
-    padding-left: 15px;
-    width: 90%;
+form{
+    padding: 25px;
 }
 
 .submit_form{
@@ -77,35 +51,17 @@ form input{
     border-radius: 5px;
     height: 40px;
     font-weight: bold;
-    margin: 15px auto 3% auto;
+    margin: 50px auto 5% auto;
     cursor: pointer;
     display: block;
     border: none;
-}
 
-
-#google_btn{
-    padding: 8px;
-    width: 25%;
-    color: black;
-    border-radius: 5px;
-    border: none;
-    font-weight: bold;
-    font-size: 11px;
-    display: block;
-    margin: 3% auto 3% auto;
-    cursor: pointer;
 }
 
 .submit_form:hover {
     background-color: white;
     color: black;
     border: solid 1px lightgrey;
-}
-
-#google_btn:hover{
-    background-color: black;
-    color: white;
 }
 
 #details{
@@ -129,6 +85,26 @@ form input{
     object-fit: cover;
 }
 
-hr{
-    width: 80%;
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
+
+.form-group label {
+    flex: 1;
+    padding-right: 60px;
+    font-weight: bold;
+    text-align: right;
+    font-size: 18px;
+}
+
+.form-group input {
+    flex: 2;
+    padding: 10px;
+    border: none;
+    border-bottom: lightgrey dashed 1px;
+}
+
+

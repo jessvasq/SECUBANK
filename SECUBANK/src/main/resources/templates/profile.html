@@ -3,30 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>SECUBANK</title>
+    <link rel="stylesheet" href="/static/css/profile.css">
 </head>
+<div id="navbar"></div>
 <body>
-    <div id="navbar"></div>
-    <h1>My Profile</h1>
-    <section>
+<div class="login_container">
+    <section class="l_section1">
+        <h1>MY PROFILE</h1>
         <form>
-            <label for="first_name">First Name</label><br>
-            <input type="text" id="first_name" name="first_name"><br>
-            <label for="last_name">Last Name</label><br>
+            <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name">
+            </div>
+            <div class="form-group">
+            <label for="last_name">Last Name</label>
             <input type="text" id="last_name" name="last_name"><br>
-            <label for="username">Username</label><br>
-            <input type="text" id="username" name="username"><br>
-            <label for="user_email">Email</label><br>
-            <input type="email" id="user_email" name="user_email"><br>
-            <label for="bio">Bio</label>
-            <input type="text" id="bio" name="bio"><br>
-            <button>Edit Profile</button>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label  for="user_email">Email</label>
+                <input type="email" id="user_email" name="user_email">
+            </div>
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <input type="text" id="bio" name="bio">
+            </div>
+            <button class="submit_form">Edit Profile</button>
         </form>
     </section>
-    <section>
-        <img src="/images/profile_Img.jpg" alt="profile_img">
+    <section class="l_section2">
+        <img src="/static/images/img1.jpeg" alt="profile_img">
     </section>
-    <div id="footer"></div>
+</div>
 
-    <script src="/static/js/load_nav_footer.js"></script>
+<div id="footer"></div>
+<script src="/static/js/load_nav_footer.js"></script>
 </body>
 </html>
