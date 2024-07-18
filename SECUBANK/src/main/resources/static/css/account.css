@@ -1,0 +1,159 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    flex: 1;
+    margin-top: 60px;
+}
+
+.inner_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+}
+.acc_section1{
+    flex: 1;
+    padding: 15px;
+}
+
+.acc_card1, .acc_card2{
+    background-color: white;
+    border: solid 1px rgba(226,226,226, 1);
+    margin: 5px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 6px 8px;
+    width: 50%;
+}
+
+.acc_card1 h3, h2, p, .acc_card2 h3, h4, h2, p {
+    margin-left: 15px;
+    line-height: 0.5rem;
+}
+
+.acc_card2{
+    background-color: lightgrey;
+    width: 60%;
+    box-shadow: none;
+}
+
+.acc_card2 div{
+    display: flex;
+}
+
+.acc_info{
+    font-weight: lighter;
+    padding-left: 60px;
+}
+
+.section1_container1{
+    display: flex;
+    margin-top: 30px;
+    width: 50%;
+}
+
+.section1_container1 h4{
+    flex: 2;
+    text-transform: uppercase;
+    margin-left: 15px;
+}
+
+.section1_container1 button{
+    flex: 1;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+
+.acc_section2{
+    padding: 15px;
+    flex: 1;
+}
+
+
+
+.section2_container{
+    width: 60%;
+}
+
+
+form input{
+    height: 30px;
+    width: 60%;
+    border: solid 1px rgba(226,226,226, 1);
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+.filter_btn{
+    border: none;
+    height: auto;
+    width: auto;
+    padding: 5px;
+}
+
+.acc_section3{
+    flex: 1;
+    margin: 15px;
+
+}
+
+/* styles.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: solid 2px rgba(226,226,226, 1);
+    table-layout: fixed; /* Ensures columns are evenly spread */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+/* Align text in last column to the right with margin */
+td:last-child, th:last-child {
+    text-align: right;
+    padding-right: 30px;
+}
+
+td:nth-child(3), th:nth-child(3){
+    text-align: right;
+}
+
+th:nth-child(3){
+    padding-right: 40px;
+}
+
+th:nth-child(1){
+    padding: 15px 0 15px 0;
+}
+td:nth-child(1), th:nth-child(1){
+    padding-left: 30px;
+}
+
