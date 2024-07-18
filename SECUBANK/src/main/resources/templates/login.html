@@ -2,29 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/login.css">
     <title>SECUBANK</title>
 </head>
+
+<div id="navbar"></div>
+
 <body>
-    <div id="navbar"></div>
-    <section>
-        <h1>SIGN IN</h1>
-        <p>Donec pellentesque quis ex eget consequat. Sed ornare sagittis nisl ac gravida.</p>
-        <form>
-            <label for="first_name">First Name</label><br>
-            <input type="text" id="first_name" name="first_name"><br>
-            <label for="last_name">Last Name</label><br>
-            <input type="text" id="last_name" name="last_name"><br>
-            <label for="user_email">Email</label><br>
-            <input type="email" id="user_email" name="user_email"><br>
-            <input type="submit">
-        </form>
-        <hr>
-        <button>Google</button>
-        <p>By clicking continue, you agree to our <b>Terms of Service</b> and <b>Privacy Policy</b></p>
-    </section>
-    <section>
-        <img src="/images/profile_Img.jpg" alt="login_img"/>
-    </section>
+    <div class="login_container">
+        <section class="l_section1">
+            <h1>SIGN IN</h1>
+            <p>Donec pellentesque quis ex eget consequat. Sed ornare sagittis nisl ac gravida.</p>
+            <form>
+                <div class="f_section1">
+                    <div class="f_group">
+                        <label for="first_name">First Name</label><br>
+                        <input type="text" id="first_name" name="first_name" placeholder="Jessica"><br>
+                    </div>
+                    <div class="f_group">
+                        <label for="last_name">Last Name</label><br>
+                        <input type="text" id="last_name" name="last_name" placeholder="Smith"><br>
+                    </div>
+                </div>
+
+                <div class="f_group">
+                    <label for="user_email">Email address</label><br>
+                    <input type="email" id="user_email" name="user_email" placeholder="email@domain.com"><br>
+                </div>
+
+                <div class="f_group">
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password"><br>
+                </div>
+                <button class="submit_form">SIGN IN</button>
+            </form>
+            <hr>
+            <button id="google_btn">Google</button>
+            <p id="details">By clicking continue, you agree to our <b style="color: rgba(7,10,5,0.73)">Terms of Service</b> and <b style="color: rgba(7,10,5,0.73)">Privacy Policy</b></p>
+        </section>
+        <section class="l_section2">
+            <img src="" alt="login_img"/>
+        </section>
+    </div>
     <div id="footer"></div>
 
     <script src="/static/js/load_nav_footer.js"></script>
