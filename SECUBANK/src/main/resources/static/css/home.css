@@ -4,6 +4,7 @@
     }
 
     main{
+        flex: 1;
         margin-top: 60px;
     }
 
@@ -17,14 +18,28 @@
         background-color: white;
         border: solid 1px rgba(226,226,226, 1);
         /*padding: 0 40px 0 40px;*/
+        padding: 20px;
         margin: 5px;
         border-radius: 8px;
         text-align: left;
         box-shadow: rgba(0, 0, 0, 0.2) 0 6px 8px;
     }
 
-    .account_card h3, h2, p {
+    .account_card h3, h2{
         margin-left: 15px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .account_card h3{
+        padding-bottom: 20px;
+    }
+
+    .account_card p{
+        color: lightgrey;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
     }
 
     .section2{
@@ -47,26 +62,6 @@
         padding: 20px 0 20px 0;
     }
 
-    .notification_card{
-        display: flex;
-        background-color: white;
-        width: 70%;
-        margin-left: 3%;
-        line-height: 0.5px;
-    }
-
-    .circle{
-        width: 6%;
-        background-color: lightcoral;
-        border-radius: 50%;
-        height: 40px;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-
-    .desc{
-        margin-left: 2%;
-    }
 
 
     .section3{
@@ -88,9 +83,11 @@
     }
 
 
-    p{
+   .article_container p{
         color: grey;
         font-size: 12px;
+       padding-bottom: 15px;
+
     }
 
     #notification_title{
@@ -109,3 +106,71 @@
     margin-right: 4%;
     text-align: justify;
 }
+
+
+    .n_section2{
+        width: 80%;
+        display: flex;
+        border-radius: 10px;
+        margin: 3% auto 0 auto;
+        border: solid 1px rgba(226,226,226, 1);
+    }
+
+    .inner_container1{
+        flex: 2;
+    }
+
+    .inner_box1{
+        flex: 0.2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .box{
+        display: flex;
+        width: 90%;
+        margin: 0 auto 0 auto;
+    }
+
+    .box img{
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+    }
+
+    .inner_box2{
+        flex: 3;
+    }
+
+    .inner_box2 p{
+        margin-left: 0;
+        font-size: 12px;
+    }
+
+    .inner_container2{
+        flex: 1;
+        background-color: yellow;
+    }
+
+    .inner_container2 img {
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .inner_box2 p{
+        margin-top: 0;
+        color: lightgrey;
+        text-align: left;
+    }
+
+    h5{
+        margin-bottom: 0;
+    }

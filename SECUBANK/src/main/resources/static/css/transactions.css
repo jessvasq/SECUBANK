@@ -6,6 +6,10 @@ h1 {
     text-align: center;
 }
 
+.container{
+    margin-top: 60px;
+    flex: 1;
+}
 
 #options{
     display: flex;
