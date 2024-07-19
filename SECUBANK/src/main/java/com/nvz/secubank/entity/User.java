@@ -40,6 +40,7 @@ public class User {
     private ZoneId timeZone;
     private LocalDateTime createdAt;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private String accountType;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
@@ -50,7 +51,5 @@ public class User {
 
     @OneToMany(mappedBy= "user", cascade = CascadeType.ALL)
     private List<Recipient> recipients;
-
-
 
 }
