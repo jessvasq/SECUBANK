@@ -39,7 +39,6 @@ public class User {
     private String language;
     private ZoneId timeZone;
     private LocalDateTime createdAt;
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private String accountType;
 

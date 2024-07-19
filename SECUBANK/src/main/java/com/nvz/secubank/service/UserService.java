@@ -7,8 +7,9 @@ import java.util.List;
 
 @Component
 public interface UserService {
+    boolean userExistsByEmail(String email);
+    boolean userExistsByUsername(String username);
     void saveUser(UserDto userDto);
-    UserDto getUserById(Long userId);
     List<UserDto> getAllUsers();
     UserDto updateUser(Long id, UserDto userDto);
     void deleteUser(Long userId);

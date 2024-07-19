@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 /*
@@ -32,9 +33,11 @@ public class UserDto {
     private String email;
     @NotEmpty(message = "Please enter your address")
     private String address;
-    @NotEmpty
-    private String accountType;
+    @NotEmpty(message = "Please enter your phone number")
+    private String phoneNumber;
+    private String profilePicture;
     private String language;
+    private LocalDateTime createdAt;
     private ZoneId timeZone;
 
 }
