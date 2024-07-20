@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
     <title>SECUBANK</title>
 </head>
 
@@ -13,7 +13,7 @@
         <section class="l_section1">
             <h1>SIGN IN</h1>
             <p>Donec pellentesque quis ex eget consequat. Sed ornare sagittis nisl ac gravida.</p>
-            <form>
+            <form th:action="@{/login}" method="post">
                 <div class="f_section1">
                     <div class="f_group">
                         <label for="first_name">First Name</label><br>
@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="f_group">
-                    <label for="user_email">Email address</label><br>
-                    <input type="email" id="user_email" name="user_email" placeholder="email@domain.com"><br>
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username" placeholder="your username"><br>
                 </div>
 
                 <div class="f_group">
@@ -41,9 +41,10 @@
 
             <button id="google_btn">Google</button>
             <p id="details">By clicking continue, you agree to our <b style="color: rgba(7,10,5,0.73)">Terms of Service</b> and <b style="color: rgba(7,10,5,0.73)">Privacy Policy</b></p>
+            <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
         </section>
         <section class="l_section2">
-            <img src="/static/images/img1.jpeg" alt="login_img"/>
+            <img th:src="@{/images/img1.jpeg}" alt="login_img"/>
         </section>
     </div>
     <div id="footer"></div>

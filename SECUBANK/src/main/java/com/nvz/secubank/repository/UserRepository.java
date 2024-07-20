@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     //optional is a container class that may or may not contain a null value
     Optional<User> findByEmail(String email);
-    Optional<User> findByUsername(String username);
+    Optional<User> findByUserName(String userName);
+   // User findUserByUserName(String userName);
 }

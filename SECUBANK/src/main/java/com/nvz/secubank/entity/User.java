@@ -1,6 +1,7 @@
 package com.nvz.secubank.entity;
 
 import com.nvz.secubank.entity.Account;
+import com.nvz.secubank.entity.enumClasses.AccountType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,8 +40,9 @@ public class User {
     private String language;
     private ZoneId timeZone;
     private LocalDateTime createdAt;
+
     @Enumerated(EnumType.STRING)
-    private String accountType;
+    private AccountType accountType;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Account> accounts;

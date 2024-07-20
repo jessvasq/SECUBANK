@@ -4,6 +4,7 @@ import com.nvz.secubank.dto.UserDto;
 import com.nvz.secubank.entity.User;
 import com.nvz.secubank.repository.UserRepository;
 import com.nvz.secubank.service.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
-
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -27,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean userExistsByUsername(String username) {
-        return userRepository.findByUsername(username).isPresent();
+    public boolean userExistsByUsername(String userName) {
+        return userRepository.findByUserName(userName).isPresent();
     }
 
     @Override
@@ -41,10 +42,12 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userDto.getEmail());
         user.setAddress(userDto.getAddress());
         user.setPhoneNumber(userDto.getPhoneNumber());
-        user.setCreatedAt(LocalDateTime.now());
-        user.setTimeZone(ZoneId.systemDefault());
         user.setProfilePicture(userDto.getProfilePicture());
         user.setLanguage(userDto.getLanguage());
+        user.setCreatedAt(LocalDateTime.now());
+        user.setTimeZone(ZoneId.systemDefault());
+        user.setSsn(userDto.getSsn());
+        user.setAccountType(userDto.getAccountType());
 
         //persist to db
         userRepository.save(user);
