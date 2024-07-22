@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>SECUBANK</title>
@@ -10,9 +10,9 @@
     <main>
     <h1>MY ACCOUNTS</h1>
     <section class=section1>
-        <div class="account_card">
-            <h3>Account Name #1 - 1111</h3>
-            <h2>$10,000</h2>
+        <div class="account_card" th:each="account : ${accounts}">
+            <h3 th:text="${account.accountType}"></h3>
+            <h2 th:text="${account.balance}"></h2>
             <p>Details: -8% month over month</p>
         </div>
 

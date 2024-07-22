@@ -34,18 +34,21 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/public/**").permitAll()
                         .requestMatchers("/register/**").permitAll() //anyone can access this endpoint
-                        .requestMatchers("/accounts").hasRole("USER") //restrict access to the '/accounts' endpoint to users with 'USER' role
+                        .requestMatchers("/users/**").permitAll()
+                        .requestMatchers("/accounts/**").hasRole("USER")//restrict access to the '/accounts' endpoint to users with 'USER' role
                         .anyRequest().authenticated() // all other requests can only be accessed by authenticated users
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")//form will be submitted to this endpoint
-                        .defaultSuccessUrl("/home") //users will be redirected to this endpoint after successful authentication
+                        .defaultSuccessUrl("/users/new", true) //users will be redirected to this endpoint after successful authentication
                         .permitAll()//anyone can access the login page
                 )
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))//when a user access this endpoint, they will be logged out
+                                .logoutSuccessUrl("/login?logout")
                                 .permitAll()
                         );
                 return http.build(); //builds the 'HttpSecurity' config and returns the 'securityFilterChain' object

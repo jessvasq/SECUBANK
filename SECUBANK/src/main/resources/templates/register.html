@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Create Account</h1>
-<form method="POST" th:action="@{/register}" th:object="${user}">
+<form method="POST" th:action="@{/register/save}" th:object="${user}">
     <div>
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" th:field="*{firstName}" />
@@ -51,14 +51,8 @@
         <input type="text" id="language" th:field="*{language}" />
     </div>
     <div>
-        <label for="accountType">Account Type:</label>
-        <select id="accountType" th:field="*{accountType}">
-            <option value="" disabled selected>Select account type</option>
-            <option th:value="CHECKING">Checking</option>
-            <option th:value="SAVINGS">Savings</option>
-            <option th:value="LOAN">Loan</option>
-        </select>
-        <div th:if="${#fields.hasErrors('accountType')}" th:errors="*{accountType}">Account Type Error</div>
+        <label for="ssn">Social Security Number:</label>
+        <input type="text" id="ssn" th:field="*{ssn}" />
     </div>
     <div>
         <button type="submit">Register</button>

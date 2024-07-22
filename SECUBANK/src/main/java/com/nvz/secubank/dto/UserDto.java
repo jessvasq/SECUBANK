@@ -1,9 +1,7 @@
 package com.nvz.secubank.dto;
 
-import com.nvz.secubank.entity.enumClasses.AccountType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,8 +39,11 @@ public class UserDto {
     private String language;
     private LocalDateTime createdAt;
     private ZoneId timeZone;
-    private String ssn = "";
+    private String ssn;
 
-    @NotNull(message = "Please select an account type")
-    private AccountType accountType;
+
+    public boolean isAdminRegistration(){
+        return email.endsWith("@admin.com");
+    }
+
 }

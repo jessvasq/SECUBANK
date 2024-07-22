@@ -1,13 +1,11 @@
 package com.nvz.secubank.entity;
 
-import com.nvz.secubank.entity.Account;
-import com.nvz.secubank.entity.enumClasses.AccountType;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,11 +27,13 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
     private String profilePicture;
+
     @Column(nullable = false, length = 30)
     private String email;
+
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false, unique = true, length = 9)
+    @Column(nullable = false, unique = true, length = 12)
     private String ssn;
     @Column(nullable = false)
     private String address;
@@ -41,10 +41,10 @@ public class User {
     private ZoneId timeZone;
     private LocalDateTime createdAt;
 
-    @Enumerated(EnumType.STRING)
-    private AccountType accountType;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Role> roles;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Account> accounts;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

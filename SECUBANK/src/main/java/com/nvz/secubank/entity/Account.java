@@ -4,11 +4,11 @@ import com.nvz.secubank.entity.enumClasses.AccountType;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -27,7 +27,7 @@ public class Account {
     private String currency;
     @Column(nullable=false)
     private BigDecimal interestRate;
-    private LocalDate createdAt; //date account was created
+    private LocalDateTime createdAt; //date account was created
 
     @Enumerated(EnumType.STRING) // enum values should be stored as strings in the db
     @Column(nullable=false, length=50)
@@ -35,7 +35,7 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable=false)
-    private User owner;
+    private User user;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions;

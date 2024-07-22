@@ -1,6 +1,7 @@
 package com.nvz.secubank.controller;
 
 import com.nvz.secubank.dto.UserDto;
+import com.nvz.secubank.entity.User;
 import com.nvz.secubank.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping ("/register")
+    @GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        UserDto user = new UserDto();
+        model.addAttribute("user", user);
+        return "register";
+    }
+
+    @PostMapping ("/register/save")
     public String registerUser(@Valid @ModelAttribute("user") UserDto userDto, BindingResult bindingResult, Model model) {
-        if (userService.userExistsByEmail(userDto.getEmail())) {
-            bindingResult.rejectValue("email", "error.user" , "There is already a user registered with that email");
-        }
-        if (userService.userExistsByUsername(userDto.getUserName())){
-            bindingResult.rejectValue("userName", "error.user", "There is already a user registered with that userName");
-        }
+        User userExist = userService.findByEmail(userDto.getEmail());
         if (bindingResult.hasErrors()) {
             model.addAttribute("user", userDto);
             return "register";
@@ -49,12 +52,6 @@ public class UserController {
         List<UserDto> users = userService.getAllUsers();
         model.addAttribute("users", users);
         return "account";
-    }
-
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("user", new UserDto());
-        return "register";
     }
 
     @GetMapping("/users")

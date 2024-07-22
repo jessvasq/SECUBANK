@@ -1,7 +1,8 @@
 package com.nvz.secubank.service.impl;
-
 import com.nvz.secubank.dto.UserDto;
+import com.nvz.secubank.entity.Role;
 import com.nvz.secubank.entity.User;
+import com.nvz.secubank.repository.RoleRepository;
 import com.nvz.secubank.repository.UserRepository;
 import com.nvz.secubank.service.UserService;
 import jakarta.transaction.Transactional;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,17 +22,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Override
-    public boolean userExistsByEmail(String email) {
-        return userRepository.findByEmail(email).isPresent(); //returns true if there's a value present
-    }
-
-    @Override
-    public boolean userExistsByUsername(String userName) {
-        return userRepository.findByUserName(userName).isPresent();
-    }
 
     @Override
     public void saveUser(UserDto userDto) {
@@ -47,8 +41,24 @@ public class UserServiceImpl implements UserService {
         user.setCreatedAt(LocalDateTime.now());
         user.setTimeZone(ZoneId.systemDefault());
         user.setSsn(userDto.getSsn());
-        user.setAccountType(userDto.getAccountType());
 
+        // set role based on registration
+        String roleName;
+        if (userDto.isAdminRegistration()){
+            roleName = "ROLE_ADMIN";
+        } else {
+            roleName = "ROLE_USER";
+        }
+
+        //check if role exists
+        Role role = roleRepository.findRoleByName((roleName));
+        if (role == null){
+            role = new Role();
+            role.setName(roleName);
+            roleRepository.save(role);
+        }
+
+        user.setRoles(Collections.singletonList(role));
         //persist to db
         userRepository.save(user);
     }
@@ -85,6 +95,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     private UserDto convertEntityToDto(User user) {

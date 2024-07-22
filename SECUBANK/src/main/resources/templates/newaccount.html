@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SECUBANK</title>
+</head>
+<body>
+<h1>Create a New Bank Account</h1>
+<form th:action="@{/users/new}" th:object="${accountDto}" method="post">
+    <div>
+        <label for="accountNumber">Account Number:</label>
+        <input type="text" id="accountNumber" th:field="*{accountNumber}" placeholder="Enter account number" />
+        <div th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">Incorrect account number</div>
+    </div>
+    <div>
+        <label for="balance">Balance:</label>
+        <input type="number" id="balance" th:field="*{balance}" placeholder="Enter balance" />
+        <div th:if="${#fields.hasErrors('balance')}" th:errors="*{balance}">Incorrect balance</div>
+    </div>
+    <div>
+        <label for="currency">Currency:</label>
+        <input type="text" id="currency" th:field="*{currency}" placeholder="Enter currency" />
+        <div th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">Incorrect currency</div>
+    </div>
+    <div>
+        <label for="interestRate">Interest Rate:</label>
+        <input type="number" id="interestRate" th:field="*{interestRate}" placeholder="Enter interest rate" />
+        <div th:if="${#fields.hasErrors('interestRate')}" th:errors="*{interestRate}">Incorrect interest rate</div>
+    </div>
+    <div>
+        <label for="accountType">Account Type:</label>
+        <select id="accountType" th:field="*{accountType}">
+            <option value="" disabled selected>Select account type</option>
+            <option th:value="SAVINGS">Savings</option>
+            <option th:value="CHECKING">Checking</option>
+        </select>
+        <div th:if="${#fields.hasErrors('accountType')}" th:errors="*{accountType}">Select an account type</div>
+    </div>
+    <div>
+        <button type="submit">Create Account</button>
+    </div>
+</form>
+</body>
+</html>
