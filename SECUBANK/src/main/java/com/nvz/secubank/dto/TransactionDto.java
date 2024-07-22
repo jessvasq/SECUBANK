@@ -1,6 +1,7 @@
 package com.nvz.secubank.dto;
 
 import com.nvz.secubank.entity.enumClasses.TransactionStatus;
+import com.nvz.secubank.entity.enumClasses.TransactionType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -27,5 +28,5 @@ public class TransactionDto {
     @NotEmpty
     private String description;
     private TransactionStatus status = TransactionStatus.PENDING;
-
+    private TransactionType transactionType = TransactionType.TRANSFER;
 }

@@ -1,6 +1,7 @@
 package com.nvz.secubank.entity;
 
 import com.nvz.secubank.entity.enumClasses.TransactionStatus;
+import com.nvz.secubank.entity.enumClasses.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,11 @@ public class Transaction {
 
     @Enumerated(EnumType.STRING)
     private TransactionStatus status;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TransactionType transactionType;
 
 
     @ManyToOne(fetch = FetchType.LAZY) //entities should be loaded when requested rather than at the time the entity is created

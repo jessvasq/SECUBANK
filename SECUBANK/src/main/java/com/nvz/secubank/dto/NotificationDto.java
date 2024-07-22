@@ -14,13 +14,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class NotificationDto {
     private Long notificationID;
+
     @NotEmpty
     private String message;
+
     private LocalDateTime timestamp;
-    @NotEmpty
-    private String status;
+
     @NotEmpty
     private String notificationType;
-    @NotEmpty
-    private Long userId; //reference to the user
+
 }

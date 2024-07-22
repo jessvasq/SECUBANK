@@ -18,17 +18,21 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long notificationID;
+
     @Column(nullable = false)
     private String message;
+
     private LocalDateTime timestamp;
 
-    @Enumerated(EnumType.STRING)
-    private NotificationStatus status;
+    private boolean isRead;
 
-    @Enumerated(EnumType.STRING)
-    private NotificationType notificationType;
+//    @Enumerated(EnumType.STRING)
+//    private NotificationStatus status;
 
-    @ManyToOne
+//    @Enumerated(EnumType.STRING)
+//    private NotificationType notificationType;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable=false)
     private User user;
 }
