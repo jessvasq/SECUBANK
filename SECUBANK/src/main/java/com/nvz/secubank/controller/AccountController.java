@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class AccountController {
 
@@ -48,4 +50,14 @@ public class AccountController {
         return "redirect:/accounts";
     }
 
+    @GetMapping("/users/accounts")
+    public String showAccounts(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+        model.addAttribute("userEmail", userEmail);
+
+        List<AccountDto> accounts = accountService.getAccountsByEmail(userEmail);
+        model.addAttribute("accounts", accounts);
+        return "home";
+    }
 }

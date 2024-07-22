@@ -65,6 +65,12 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    @Override
+    public List<AccountDto> getAccountsByEmail(String email) {
+      List<Account> accounts = accountRepository.findByUser_email(email);
+        return accounts.stream().map((account) -> convertEntityToDto(account)).collect(Collectors.toList());
+    }
+
     private AccountDto convertEntityToDto(Account account) {
         AccountDto accountDto = new AccountDto();
         accountDto.setAccountId(account.getAccountId());
