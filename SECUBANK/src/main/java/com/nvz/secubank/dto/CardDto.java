@@ -1,6 +1,9 @@
 package com.nvz.secubank.dto;
 
+import com.nvz.secubank.entity.enumClasses.CardStatus;
+import com.nvz.secubank.entity.enumClasses.CardType;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,18 +20,16 @@ public class CardDto {
     private Long cardId;
     @NotEmpty(message = "Please enter card number")
     private String cardNumber;
-    @NotEmpty
-    private YearMonth expirationDate;
-    @NotEmpty
+    private String expirationDate;
     private String securityCode;
-    @NotEmpty (message = "Enter cardholder name")
+   /* @NotEmpty (message = "Enter cardholder name")*/
     private String cardHolderName;
-    @NotEmpty
     private LocalDate issueDate;
-    @NotEmpty
-    private String cardType;
-    @NotEmpty
-    private String cardStatus;
-    @NotEmpty
-    private Long accountId;
+
+    @NotNull(message = "Please select Card Type")
+    private CardType cardType;
+
+    private CardStatus status = CardStatus.ACTIVE;
+
+    private String accountNumber; //reference to account
 }

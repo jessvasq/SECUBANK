@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
 
 @Getter
 @Setter
@@ -21,8 +20,8 @@ public class Card {
     private Long cardId;
     @Column(unique=true, length=15, nullable=false)
     private String cardNumber;
-    @Column(length=15, nullable=false)
-    private YearMonth expirationDate;
+    @Column(nullable=false)
+    private String expirationDate;
     @Column(length=15, nullable=false)
     private String securityCode;
     @Column(length=50, nullable=false)

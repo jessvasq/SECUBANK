@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SECUBANK</title>
+</head>
+<body>
+    <h1>Create New Card</h1>
+    <form th:action="@{/users/card}" th:object="${card}" method="POST">
+        <div>
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" th:field="*{cardNumber}" placeholder="Enter card number" />
+        </div>
+
+<!--        <div>-->
+<!--            <label for="securityCode">Card Number:</label>-->
+<!--            <input type="text" id="securityCode" th:field="*{securityCode}" placeholder="Enter security code" />-->
+<!--        </div>-->
+
+        <div>
+            <label for="cardType">Account Type:</label>
+            <select id="cardType" th:field="*{cardType}">
+                <option value="" disabled selected>Select account type</option>
+                <option th:value="DEBIT">Debit</option>
+                <option th:value="CREDIT">Credit</option>
+            </select>
+            <div th:if="${#fields.hasErrors('cardType')}" th:errors="*{cardType}">Select card type</div>
+        </div>
+
+        <div>
+            <label for="accountNumber">Account Number:</label>
+            <input type="text" id="accountNumber" th:field="*{accountNumber}" placeholder="Enter associated account ID" />
+        </div>
+
+        <div>
+            <button type="submit">Create Card</button>
+        </div>
+    </form>
+</body>
+</html>
