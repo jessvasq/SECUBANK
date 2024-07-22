@@ -7,9 +7,5 @@ import java.util.List;
 
 @Component
 public interface TransactionService {
-    void saveTransaction(TransactionDto transactionDto);
-    List<TransactionDto> getTransactionsByAccount(Long accountId);
-    TransactionDto getTransactionById(Long transactionId);
-    void cancelTransaction(Long transactionId);
-    TransactionDto updateTransaction(Long transactionId, TransactionDto transactionDto);
+    void makeTransfer(TransactionDto transactionDto);
 }

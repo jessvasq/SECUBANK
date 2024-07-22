@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SECUBANK</title>
+</head>
+<body>
+    <form th:action="@{/transfer}" th:object="${transactionDto}" method="POST">
+        <div>
+            <label for="fromAccountNumber">Account Number:</label>
+            <input type="text" id="fromAccountNumber" th:field="*{fromAccountNumber}" placeholder="Enter account number" />
+            <div th:if="${#fields.hasErrors('fromAccountNumber')}" th:errors="*{fromAccountNumber}">Incorrect account number</div>
+        </div>
+
+        <div>
+            <label for="toAccountNumber">Select Destination Account:</label>
+            <input type="text" id="toAccountNumber" th:field="*{toAccountNumber}" placeholder="Enter destination account number" />
+            <div th:if="${#fields.hasErrors('toAccountNumber')}" th:errors="*{toAccountNumber}">Incorrect Destination Number</div>
+        </div>
+
+        <div>
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" th:field="*{amount}" placeholder="Enter Amount" />
+            <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Incorrect Amount</div>
+        </div>
+
+        <div>
+            <label for="description">Add a Memo:</label>
+            <input type="text" id="description" th:field="*{description}" placeholder="Add a memo" />
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Incorrect memo description</div>
+        </div>
+
+        <div>
+            <button type="submit">Make Transfer</button>
+        </div>
+    </form>
+</body>
+</html>

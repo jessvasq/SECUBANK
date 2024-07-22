@@ -41,6 +41,7 @@ public class User {
     private ZoneId timeZone;
     private LocalDateTime createdAt;
 
+    //entities are loaded immediately with the parent entity
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Role> roles;
 

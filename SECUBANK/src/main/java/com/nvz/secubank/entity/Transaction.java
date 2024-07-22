@@ -1,7 +1,6 @@
 package com.nvz.secubank.entity;
 
 import com.nvz.secubank.entity.enumClasses.TransactionStatus;
-import com.nvz.secubank.entity.enumClasses.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +18,12 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
+
+    @Column(nullable = false)
+    private String fromAccountNumber;
+    @Column(nullable = false)
+    private String toAccountNumber;
+
     @Column(nullable = false)
     private BigDecimal amount;
     private LocalDateTime date; //transaction date
@@ -28,11 +33,8 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private TransactionStatus status;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private TransactionType transactionType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //entities should be loaded when requested rather than at the time the entity is created
     @JoinColumn(name = "account_id", nullable=false)
     private Account account;
 

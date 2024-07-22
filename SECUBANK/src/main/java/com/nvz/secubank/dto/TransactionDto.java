@@ -1,6 +1,8 @@
 package com.nvz.secubank.dto;
 
+import com.nvz.secubank.entity.enumClasses.TransactionStatus;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +16,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class TransactionDto {
     private Long transactionId;
-    @NotEmpty
+
+    @NotEmpty (message = "Please provide Account to perform transfer")
+    private String fromAccountNumber;
+    @NotEmpty(message = "Please provide Account to perform transfer")
+    private String toAccountNumber;
+    @NotNull
     private BigDecimal amount;
-    @NotEmpty
     private LocalDateTime date;
     @NotEmpty
     private String description;
-    @NotEmpty
-    private String status;
-    @NotEmpty
-    private String transactionType;
-    @NotEmpty
-    private Long accountId; //reference to account
+    private TransactionStatus status = TransactionStatus.PENDING;
+
 }
