@@ -5,7 +5,7 @@
     <title>SECUBANK</title>
 </head>
 <body>
-    <form th:action="@{/transferByAccountNum}" th:object="${transactionDto}" method="POST">
+    <form th:action="@{/transferByEmail}" th:object="${transactionDto}" method="POST">
         <div>
             <label for="fromAccountNumber">Account Number:</label>
             <input type="text" id="fromAccountNumber" th:field="*{fromAccountNumber}" placeholder="Enter account number" />
@@ -13,9 +13,9 @@
         </div>
 
         <div>
-            <label for="toAccountNumber">Select Destination Account:</label>
-            <input type="text" id="toAccountNumber" th:field="*{toAccountNumber}" placeholder="Enter destination account number" />
-            <div th:if="${#fields.hasErrors('toAccountNumber')}" th:errors="*{toAccountNumber}">Incorrect Destination Number</div>
+            <label for="toUserEmail">Enter user's email:</label>
+            <input type="email" id="toUserEmail" th:field="*{toUserEmail}" placeholder="Enter user's email" />
+            <div th:if="${#fields.hasErrors('toUserEmail')}" th:errors="*{toUserEmail}">Incorrect user's email</div>
         </div>
 
         <div>
@@ -31,8 +31,9 @@
         </div>
 
         <div>
-            <button type="submit">Make Transfer</button>
+            <button type="submit">Send Money</button>
         </div>
     </form>
+
 </body>
 </html>

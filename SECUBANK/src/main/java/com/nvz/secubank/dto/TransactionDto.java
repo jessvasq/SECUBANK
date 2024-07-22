@@ -22,6 +22,9 @@ public class TransactionDto {
     private String fromAccountNumber;
     @NotEmpty(message = "Please provide Account to perform transfer")
     private String toAccountNumber;
+
+    private String toUserEmail;
+
     @NotNull
     private BigDecimal amount;
     private LocalDateTime date;

@@ -25,6 +25,8 @@ public class Transaction {
     @Column(nullable = false)
     private String toAccountNumber;
 
+    private String toUserEmail;
+
     @Column(nullable = false)
     private BigDecimal amount;
     private LocalDateTime date; //transaction date

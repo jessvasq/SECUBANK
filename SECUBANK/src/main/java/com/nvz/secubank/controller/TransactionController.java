@@ -4,6 +4,8 @@ import com.nvz.secubank.dto.TransactionDto;
 import com.nvz.secubank.service.TransactionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,7 +23,7 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @PostMapping("/transfer")
+    @PostMapping("/transferByAccountNum")
     public String transferFunds(@ModelAttribute("transaction") @Valid TransactionDto transactionDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
             model.addAttribute("transactionDto", transactionDto);
@@ -34,7 +36,28 @@ public class TransactionController {
         return "redirect:/home";
     }
 
-    @GetMapping("/transfer")
+    @PostMapping("/transferByEmail")
+    public String sendTransaction(@ModelAttribute("transaction") TransactionDto transactionDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()){
+            model.addAttribute("transactionDto", transactionDto);
+            bindingResult.getAllErrors().forEach(error -> {
+                System.out.println("Error: " + error.getDefaultMessage());
+            });
+            return "transfer";
+        }
+
+        transactionService.makeTransferByEmail(transactionDto);
+        return "redirect:/home";
+    }
+
+
+    @GetMapping("/transferByEmail")
+    public String showTransferForm(Model model) {
+        model.addAttribute("transactionDto", new TransactionDto());
+        return "transfer";
+    }
+
+    @GetMapping("/transferByAccountNum")
     public String showTransactionForm(Model model) {
         model.addAttribute("transactionDto", new TransactionDto());
         return "transaction";
