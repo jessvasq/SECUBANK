@@ -6,23 +6,33 @@
 </head>
 <body>
 <h1>Notifications List</h1>
-    <table>
-        <tr>
-            <th>Message</th>
-            <th>Timestamp</th>
-            <th>Read</th>
-            <th>Action</th>
-        </tr>
-        <tr th:each="notification : ${notifications}">
-            <td th:text="${notification.message}"></td>
-            <td th:text="${notification.timestamp}"></td>
-            <td th:text="${notification.read}"></td>
-            <td>
-                <form th:action="@{/notifications/read/{id}(id=${notification.notificationID})}" method="POST">
-                    <button type="submit" th:disabled="${notification.read}">Mark as Read</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+    <div th:each="notification : ${notifications}">
+        <div th:if="${notification.read}">
+        </div>
+
+        <div th:unless="${notification.read}">
+            <table>
+                <tr>
+                    <th>Message</th>
+                    <th>Timestamp</th>
+                    <th>Read</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr>
+                    <td th:text="${notification.message}"></td>
+                    <td th:text="${notification.message}"></td>
+                    <td th:text="${notification.timestamp}"></td>
+                    <td th:text="${notification.read}"></td>
+                    <td>
+                        <form th:action="@{/notifications/read/{id}(id=${notification.notificationID})}" method="POST">
+                            <button type="submit" th:disabled="${notification.read}">Mark as Read</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
 </body>
 </html>
