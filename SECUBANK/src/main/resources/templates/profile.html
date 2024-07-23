@@ -4,38 +4,36 @@
     <meta charset="UTF-8">
     <title>SECUBANK</title>
     <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" th:href="@{/css/profile.css}" href="/static/css/home.css">
+    <script type="text/javascript" src="/js/load_nav_footer.js"  th:src="@{/js/load_nav_footer.js}" defer></script>
 </head>
 <div id="navbar"></div>
 <body>
 <div class="login_container">
     <section class="l_section1">
         <h1>MY PROFILE</h1>
-        <form>
             <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name">
+            <p class="user_title"><strong>First Name:</strong> <span class="user_info" th:text="${user.firstName}"></span></p>
             </div>
             <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name"><br>
+            <p><strong>Last Name:</strong> <span class="user_info" th:text="${user.lastName}"></span></p>
             </div>
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
+            <p><strong>Email:</strong> <span class="user_info" th:text="${user.email}"></span></p>
             </div>
             <div class="form-group">
-                <label  for="user_email">Email</label>
-                <input type="email" id="user_email" name="user_email">
+            <p><strong>Phone Number:</strong> <span class="user_info" th:text="${user.phoneNumber}"></span></p>
             </div>
             <div class="form-group">
-                <label for="bio">Bio</label>
-                <input type="text" id="bio" name="bio">
+            <p><strong>Address:</strong> <span class="user_info" th:text="${user.address}"></span></p>
             </div>
-            <button class="submit_form">Edit Profile</button>
-        </form>
+            <button class="submit_form">
+                <a th:href="@{/updateUser}">
+                Edit Profile</a>
+            </button>
     </section>
     <section class="l_section2">
-        <img src="/static/images/img1.jpeg" alt="profile_img">
+        <img th:src="@{/images/img1.jpeg}" alt="profile_img">
     </section>
 </div>
 

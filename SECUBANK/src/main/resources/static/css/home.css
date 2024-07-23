@@ -46,6 +46,12 @@
         text-align: right;
     }
 
+    .card_amount{
+        display: flex;
+        justify-content: right;
+        font-size: 25px;
+    }
+
     .section2{
         display: grid;
         grid-template-columns: repeat(3, 1fr);

@@ -65,6 +65,6 @@ public class AccountController {
     public String showAccountDetails(@PathVariable("id") Long id, Model model) {
         AccountDto accountDto = accountService.getAccountById(id);
         model.addAttribute("accountDto", accountDto);
-        return "showaccount";
+        return "account";
     }
 }

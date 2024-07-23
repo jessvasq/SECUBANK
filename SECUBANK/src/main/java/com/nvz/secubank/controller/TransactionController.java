@@ -33,7 +33,7 @@ public class TransactionController {
             return "transaction";
         }
         transactionService.makeTransfer(transactionDto);
-        return "redirect:/home";
+        return "redirect:/users/accounts";
     }
 
     @PostMapping("/transferByEmail")

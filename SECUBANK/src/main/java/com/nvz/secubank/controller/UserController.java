@@ -3,6 +3,7 @@ package com.nvz.secubank.controller;
 import com.nvz.secubank.dto.UserDto;
 import com.nvz.secubank.dto.UserDtoUpdate;
 import com.nvz.secubank.entity.User;
+import com.nvz.secubank.repository.UserRepository;
 import com.nvz.secubank.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.BindingResult;
 import java.util.List;
 
@@ -21,6 +19,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
@@ -58,21 +58,6 @@ public class UserController {
         return "account";
     }
 
-//    @GetMapping("/")
-//    public String index() {
-//        return "home";
-//    }
-//
-//    @GetMapping("/footer")
-//    public String footer() {
-//        return "footer";
-//    }
-//
-//    @GetMapping("/nav")
-//    public String nav() {
-//        return "navBar";
-//    }
-
     @GetMapping("/users")
     public String users(Model model) {
         List<UserDto> users = userService.getAllUsers();
@@ -93,7 +78,26 @@ public class UserController {
         Long userID = user.getUserId();
 
         userService.updateUser(userID, userDto);
-        return "redirect:/home"; // Redirect to the list of users or user profile page
+        return "redirect:/profile";
+    }
+
+//    @GetMapping("/profile")
+//    public String showUserDetails(Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String userEmail = authentication.getName();
+//        User user = userService.findByEmail(userEmail);
+//        model.addAttribute("user", user);
+//        return "profile";
+//    }
+
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+        User user = userService.findByEmail(userEmail);
+
+        model.addAttribute("user", user);
+        return "profile";
     }
 
     @GetMapping("/updateUser")

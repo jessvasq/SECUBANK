@@ -17,7 +17,10 @@
             <a style="text-decoration: none; color: black" th:href="@{/accounts/{id}(id=${account.accountId})}">
             <h3 th:text="${account.accountType}"></h3>
                 <h2 style="font-size: 18px" th:text="${account.accountNumber}"></h2>
+                <div class="card_amount">
+                    <h2 style=" padding-top: 18px; margin-right: 5px">$</h2>
                 <h2 style="text-align: right; padding-top: 18px" th:text="${account.balance}"></h2>
+                </div>
             <p>Details: -8% month over month</p>
             </a>
         </div>

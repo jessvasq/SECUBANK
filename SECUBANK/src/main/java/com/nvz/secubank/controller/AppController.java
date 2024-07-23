@@ -30,10 +30,10 @@ public class AppController {
         return "navBar";
     }
 
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
-    }
+//    @GetMapping("/profile")
+//    public String profile() {
+//        return "profile";
+//    }
 
     @GetMapping("/userAccount")
     public String userAccount() {

@@ -10,14 +10,17 @@
 <div id="navbar"></div>
 <body>
 <div class="container">
-    <h1>ACCOUNT NAME</h1>
 
     <div class="inner_container">
         <section class="acc_section1">
             <div class="acc_card1">
-                <h2>Account Name #1 - 1111</h2>
-                <h3>$10,000</h3>
-                <p>Details: -8% month over month</p>
+                <h2 th:text="${accountDto.accountType}"></h2>
+                <h2 style="font-weight: normal" th:text="${accountDto.accountNumber}"></h2>
+                <div class="card_amount">
+                    <h3>$</h3>
+                    <h3 th:text="${accountDto.balance}"></h3>
+                </div>
+                <p>Details: - 8% month over month</p>
             </div>
 
             <div class="section1_container1">
@@ -25,22 +28,22 @@
 
                 <button class="option1"> <a th:href="@{/transferByAccountNum}"> Transfer between Accounts </a></button>
                 <button class="option1"> <a th:href="@{/transferByEmail}"> Send Money </a></button>
-<!--                <a th:href="@{/processTransfer}">-->
-<!--                <button>Make Transfer</button></a>-->
             </div>
         </section>
 
         <section class="acc_section2">
 
             <div class="acc_card2">
-                <h2>Account Details - 111</h2>
+               <div>
+                   <h2> Account Details:  </h2>
+                   <h2 th:text="${accountDto.accountNumber.substring(accountDto.accountNumber.length()-3)}"></h2></div>
                 <div>
                     <h4>Account Number</h4>
-                    <h4 class="acc_info">2681145511500</h4>
+                    <h4 class="acc_info" th:text="${accountDto.accountNumber}"></h4>
                 </div>
                 <div>
                     <h4>Routing Number</h4>
-                    <h4 class="acc_info">674116</h4>
+                    <h4 class="acc_info" >674116</h4>
                 </div>
             </div>
 

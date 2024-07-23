@@ -10,7 +10,9 @@ body {
 
 .container{
     flex: 1;
-    margin-top: 60px;
+    width: 90%;
+    margin: 70px auto 0 auto;
+    /*margin-top: 70px;*/
 }
 
 .inner_container{
@@ -42,20 +44,31 @@ h1{
     padding: 0;
 }
 
-.acc_card1 h2, .acc_card2 h2{
+.acc_card2 h2{
     padding-bottom: 20px;
+}
+
+.card_amount{
+    display: flex;
+    justify-content: right;
+    font-size: 25px;
 }
 
 .acc_card2{
     width: 60%;
     box-shadow: none;
     background: radial-gradient(#daa666, skyblue);
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .acc_card2 div{
     display: flex;
 }
+
+.acc_card1 h3, p{
+    text-align: right;
+}
+
 
 .acc_info{
     font-weight: lighter;
