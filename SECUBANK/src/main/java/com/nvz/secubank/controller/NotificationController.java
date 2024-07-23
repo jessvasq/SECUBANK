@@ -29,7 +29,7 @@ public class NotificationController {
         return "notificationsList";
     }
 
-    @PostMapping("/notifications/read")
+    @PostMapping("/notifications/read/{id}")
     public String readNotification(@PathVariable Long id) {
         notificationService.markNotificationAsRead(id);
         return "redirect:/notifications";

@@ -71,6 +71,11 @@ public class AccountServiceImpl implements AccountService {
         return accounts.stream().map((account) -> convertEntityToDto(account)).collect(Collectors.toList());
     }
 
+    @Override
+    public AccountDto getAccountById(Long accountId) {
+        return convertEntityToDto(accountRepository.findById(accountId).get());
+    }
+
     private AccountDto convertEntityToDto(Account account) {
         AccountDto accountDto = new AccountDto();
         accountDto.setAccountId(account.getAccountId());

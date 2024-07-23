@@ -11,4 +11,5 @@ public interface AccountService {
     List<AccountDto> getAccountsByUserId(Long userId);
     void removeAccountById(Long accountId);
     List<AccountDto> getAccountsByEmail(String email);
+    AccountDto getAccountById(Long accountId);
 }

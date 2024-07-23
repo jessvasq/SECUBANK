@@ -1,6 +1,5 @@
 package com.nvz.secubank.service;
 
-import com.nvz.secubank.dto.NotificationDto;
 import com.nvz.secubank.entity.Notification;
 import org.springframework.stereotype.Component;
 

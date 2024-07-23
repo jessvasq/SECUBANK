@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SECUBANK</title>
+</head>
+<body>
+    <h1>ACCOUNT DETAILS</h1>
+    <h2 th:text="${accountDto.accountType}"></h2>
+    <h4>Balance</h4>
+    <p th:text="${accountDto.balance}"></p>
+    <h4>Account Number</h4>
+    <p th:text="${accountDto.accountNumber}"></p>
+    <h4>Interest </h4>
+    <p th:text="${accountDto.interestRate}"></p>
+</body>
+</html>

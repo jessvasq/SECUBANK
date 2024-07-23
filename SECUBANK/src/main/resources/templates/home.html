@@ -10,10 +10,13 @@
     <main>
     <h1>MY ACCOUNTS</h1>
     <section class=section1>
+
         <div class="account_card" th:each="account : ${accounts}">
+            <a th:href="@{/accounts/{id}(id=${account.accountId})}">
             <h3 th:text="${account.accountType}"></h3>
             <h2 th:text="${account.balance}"></h2>
             <p>Details: -8% month over month</p>
+            </a>
         </div>
 
 <!--        <div class="account_card">-->
