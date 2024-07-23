@@ -1,5 +1,6 @@
 package com.nvz.secubank.service.impl;
 import com.nvz.secubank.dto.UserDto;
+import com.nvz.secubank.dto.UserDtoUpdate;
 import com.nvz.secubank.entity.Role;
 import com.nvz.secubank.entity.User;
 import com.nvz.secubank.repository.RoleRepository;
@@ -70,19 +71,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(Long id, UserDto userDto) {
+    public UserDto updateUser(Long userId, UserDtoUpdate userDto) {
         //findById returns an Optional<User>, therefore we use .orElse to return null if the user is not found
-          User user = userRepository.findById(id).orElse(null);
-          user.setFirstName(userDto.getFirstName());
-          user.setLastName(userDto.getLastName());
+          User user = userRepository.findByUserId(userId);
           user.setUserName(userDto.getUserName());
+          user.setEmail(userDto.getEmail());
 
-          //encode password if it has changed
-        if (!user.getPassword().equals(userDto.getPassword())) {
-            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        }
+//          //encode password if it has changed
+//        if (!user.getPassword().equals(userDto.getPassword())) {
+//            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+//        }
 
-        user.setEmail(userDto.getEmail());
         user.setAddress(userDto.getAddress());
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setProfilePicture(userDto.getProfilePicture());
