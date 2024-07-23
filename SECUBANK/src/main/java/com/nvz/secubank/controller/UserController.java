@@ -38,18 +38,18 @@ public class UserController {
         }
 
         userService.saveUser(userDto);
-        return "redirect:/accounts";
+        return "redirect:/users/accounts";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
+//    @GetMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
+//
+//    @GetMapping("/home")
+//    public String home() {
+//        return "home";
+//    }
 
     @GetMapping("/accounts")
     public String accounts(Model model) {
@@ -57,6 +57,21 @@ public class UserController {
         model.addAttribute("users", users);
         return "account";
     }
+
+//    @GetMapping("/")
+//    public String index() {
+//        return "home";
+//    }
+//
+//    @GetMapping("/footer")
+//    public String footer() {
+//        return "footer";
+//    }
+//
+//    @GetMapping("/nav")
+//    public String nav() {
+//        return "navBar";
+//    }
 
     @GetMapping("/users")
     public String users(Model model) {

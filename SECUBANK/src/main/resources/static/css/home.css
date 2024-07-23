@@ -17,29 +17,33 @@
         width: 15%;
         background-color: white;
         border: solid 1px rgba(226,226,226, 1);
-        /*padding: 0 40px 0 40px;*/
+        padding: 0 40px 0 40px;
         padding: 20px;
         margin: 5px;
         border-radius: 8px;
         text-align: left;
-        box-shadow: rgba(0, 0, 0, 0.2) 0 6px 8px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 6px 4px;
+        /*background: radial-gradient(#daa666, white);*/
+        /*background: radial-gradient(ellipse at top, floralwhite, transparent),*/
+        /*radial-gradient(ellipse at bottom, #daa666, transparent);*/
     }
 
     .account_card h3, h2{
         margin-left: 15px;
         margin: 0;
-        padding: 0;
+        padding:0;
+        color: rgba(0,0,0,0.73);
     }
 
     .account_card h3{
-        padding-bottom: 20px;
+        color: black;
+        font-weight: bolder;
     }
 
     .account_card p{
-        color: lightgrey;
         margin: 0;
-        padding: 0;
         font-size: 12px;
+        text-align: right;
     }
 
     .section2{
@@ -108,7 +112,7 @@
 }
 
 
-    .n_section2{
+    #section2{
         width: 80%;
         display: flex;
         border-radius: 10px;
@@ -156,7 +160,6 @@
 
     .inner_container2{
         flex: 1;
-        background-color: yellow;
     }
 
     .inner_container2 img {

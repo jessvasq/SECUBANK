@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/css/account.css">
+    <script type="text/javascript" src="/js/load_nav_footer.js"  th:src="@{/js/load_nav_footer.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/account.css}" href="/static/css/home.css">
     <title>SECUBANK</title>
 </head>
 <div id="navbar"></div>
@@ -19,8 +21,12 @@
             </div>
 
             <div class="section1_container1">
-                <h4>Recent Transactions</h4>
-                <button >Make Transfer</button>
+<!--                <h4>Recent Transactions</h4>-->
+
+                <button class="option1"> <a th:href="@{/transferByAccountNum}"> Transfer between Accounts </a></button>
+                <button class="option1"> <a th:href="@{/transferByEmail}"> Send Money </a></button>
+<!--                <a th:href="@{/processTransfer}">-->
+<!--                <button>Make Transfer</button></a>-->
             </div>
         </section>
 
@@ -87,6 +93,6 @@
 
     <div id="footer"></div>
     <a th:href="@{/logout}">Logout</a>
-    <script src="/static/js/load_nav_footer.js"></script>
+    <script src="/js/load_nav_footer.js"></script>
 </body>
 </html>

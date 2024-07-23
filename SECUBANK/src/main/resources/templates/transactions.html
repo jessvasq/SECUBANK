@@ -4,36 +4,60 @@
     <meta charset="UTF-8">
     <title>SECUBANK</title>
     <link rel="stylesheet" href="/static/css/transactions.css">
+    <link rel="stylesheet" th:href="@{/css/transactions.css}" href="/static/css/home.css">
+    <script type="text/javascript" src="/js/load_nav_footer.js"  th:src="@{/js/load_nav_footer.js}" defer></script>
 </head>
 <div id="navbar"></div>
 <body>
 <div class="container">
     <h1>TRANSACTIONS</h1>
     <section class="t_section1">
-        <div id="options">
+<!--        <div id="options">-->
+<!--                <button class="option1"> <a th:href="@{/transferByAccountNum}"> Transfer between </br>  Accounts </a></button>-->
+<!--                <button class="option1"> <a th:href="@{/transferByEmail}"> Send </br> Money </a></button>-->
+<!--        </div>-->
 
-                <button class="option1">Transfer between </br>  Accounts</button>
-                <button class="option1">Send </br> Money</button>
-
-        </div>
-
-        <div>
+        <div id = "transferContainer">
+            <h1>SEND MONEY</h1>
             <div class="search_container">
                 <form>
                     <!--TODO: Add icon-->
                     <!--TODO: Implement search bar functionality-->
                     <input type="search" placeholder="Search Contacts" name="search" id="search">
-<!--                    <button >Filter</button>-->
+                    <!--                    <button >Filter</button>-->
                 </form>
             </div>
 
-            <form>
-                <input type="email" placeholder="email@domain.com">
-                <input type="text" placeholder="Account Number">
-                <input type="text" placeholder="Description">
-                <input type="text" placeholder="$ Amount">
-                <button id="submit_form">SEND</button>
+            <form th:action="@{/transferByEmail}" th:object="${transactionDto}" method="POST">
+                <div class="f_group">
+                    <label for="fromAccountNumber">Enter Account Number </label>
+                    <input type="text" id="fromAccountNumber" th:field="*{fromAccountNumber}" placeholder="Enter account number" />
+                    <div th:if="${#fields.hasErrors('fromAccountNumber')}" th:errors="*{fromAccountNumber}">Incorrect account number</div>
+                </div>
+
+                <div class="f_group">
+                    <label for="toUserEmail">Enter Recipient's Email</label>
+                    <input type="email" id="toUserEmail" th:field="*{toUserEmail}" placeholder="Enter user's email" />
+                    <div th:if="${#fields.hasErrors('toUserEmail')}" th:errors="*{toUserEmail}">Incorrect user's email</div>
+                </div>
+
+                <div class="f_group">
+                    <label for="amount"> Enter Amount</label>
+                    <input type="text" id="amount" th:field="*{amount}" placeholder="Enter Amount" />
+                    <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Incorrect Amount</div>
+                </div>
+
+                <div class="f_group">
+                    <label for="description">Memo</label>
+                    <input type="text" id="description" th:field="*{description}" placeholder="Description" />
+                    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Incorrect memo description</div>
+                </div>
+
+                <button id="submit_form" type="submit">Send Money</button>
             </form>
+        </div>
+
+
         </div>
     </section>
 
@@ -75,6 +99,6 @@
     </section>
 </div>
     <div id="footer"></div>
-    <script src="/static/js/load_nav_footer.js"></script>
+<!--    <script src="/js/load_nav_footer.js"></script>-->
 </body>
 </html>

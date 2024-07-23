@@ -47,7 +47,7 @@ public class AccountController {
         accountDto.setUserEmail(userEmail);
 
         accountService.addAccount(accountDto);
-        return "redirect:/accounts";
+        return "redirect:/users/accounts";
     }
 
     @GetMapping("/users/accounts")

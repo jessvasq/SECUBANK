@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>SECUBANK</title>
 </head>
 
@@ -39,16 +40,15 @@
 
             <hr>
 
-            <button id="google_btn">Google</button>
-            <p id="details">By clicking continue, you agree to our <b style="color: rgba(7,10,5,0.73)">Terms of Service</b> and <b style="color: rgba(7,10,5,0.73)">Privacy Policy</b></p>
-            <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+            <button id="google_btn"><i  style="color: orangered" class="fab fa-google"></i> Sign in with Google </button>
+            <p class="details">By clicking continue, you agree to our <b style="color: rgba(7,10,5,0.73)">Terms of Service</b> and <b style="color: rgba(7,10,5,0.73)">Privacy Policy</b></p>
+            <p  class="details">Don't have an account? <a style="text-decoration: none; font-size: 14px" th:href="@{/register}">
+                <b style="color: orangered">Register here</b></a></p>
         </section>
         <section class="l_section2">
             <img th:src="@{/images/img1.jpeg}" alt="login_img"/>
         </section>
     </div>
-    <div id="footer"></div>
 
-    <script src="/static/js/load_nav_footer.js"></script>
 </body>
 </html>

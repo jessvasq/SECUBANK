@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")//form will be submitted to this endpoint
-                        .defaultSuccessUrl("/users/new", true) //users will be redirected to this endpoint after successful authentication
+                        .defaultSuccessUrl("/users/accounts", true) //users will be redirected to this endpoint after successful authentication
                         .permitAll()//anyone can access the login page
                 )
                 .logout(logout -> logout

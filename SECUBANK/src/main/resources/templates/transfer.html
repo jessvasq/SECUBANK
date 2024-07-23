@@ -1,39 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SECUBANK</title>
-</head>
-<body>
-    <form th:action="@{/transferByEmail}" th:object="${transactionDto}" method="POST">
-        <div>
-            <label for="fromAccountNumber">Account Number:</label>
-            <input type="text" id="fromAccountNumber" th:field="*{fromAccountNumber}" placeholder="Enter account number" />
-            <div th:if="${#fields.hasErrors('fromAccountNumber')}" th:errors="*{fromAccountNumber}">Incorrect account number</div>
-        </div>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns="http://www.w3.org/1999/html">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>SECUBANK</title>-->
+<!--    <link rel="stylesheet" href="/static/css/transactions.css">-->
+<!--    <link rel="stylesheet" th:href="@{/css/transactions.css}" href="/static/css/home.css">-->
+<!--    <script type="text/javascript" src="/js/load_nav_footer.js"  th:src="@{/js/load_nav_footer.js}" defer></script>-->
+<!--</head>-->
+<!--<div id="navbar"></div>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1>SEND MONEY</h1>-->
 
-        <div>
-            <label for="toUserEmail">Enter user's email:</label>
-            <input type="email" id="toUserEmail" th:field="*{toUserEmail}" placeholder="Enter user's email" />
-            <div th:if="${#fields.hasErrors('toUserEmail')}" th:errors="*{toUserEmail}">Incorrect user's email</div>
-        </div>
+<!--    <div>-->
+<!--        <div class="search_container">-->
+<!--            <form>-->
+<!--                &lt;!&ndash;TODO: Add icon&ndash;&gt;-->
+<!--                &lt;!&ndash;TODO: Implement search bar functionality&ndash;&gt;-->
+<!--                <input type="search" placeholder="Search Contacts" name="search" id="search">-->
+<!--                &lt;!&ndash;                    <button >Filter</button>&ndash;&gt;-->
+<!--            </form>-->
+<!--        </div>-->
 
-        <div>
-            <label for="amount">Amount:</label>
-            <input type="text" id="amount" th:field="*{amount}" placeholder="Enter Amount" />
-            <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Incorrect Amount</div>
-        </div>
+<!--        <form th:action="@{/transferByEmail}" th:object="${transactionDto}" method="POST">-->
+<!--            <div class="f_group">-->
+<!--                <label for="fromAccountNumber">Enter Account Number </label>-->
+<!--                <input type="text" id="fromAccountNumber" th:field="*{fromAccountNumber}" placeholder="Enter account number" />-->
+<!--                <div th:if="${#fields.hasErrors('fromAccountNumber')}" th:errors="*{fromAccountNumber}">Incorrect account number</div>-->
+<!--            </div>-->
 
-        <div>
-            <label for="description">Add a Memo:</label>
-            <input type="text" id="description" th:field="*{description}" placeholder="Add a memo" />
-            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Incorrect memo description</div>
-        </div>
+<!--            <div class="f_group">-->
+<!--                <label for="toUserEmail">Enter Recipient's Email</label>-->
+<!--                <input type="email" id="toUserEmail" th:field="*{toUserEmail}" placeholder="Enter user's email" />-->
+<!--                <div th:if="${#fields.hasErrors('toUserEmail')}" th:errors="*{toUserEmail}">Incorrect user's email</div>-->
+<!--            </div>-->
 
-        <div>
-            <button type="submit">Send Money</button>
-        </div>
-    </form>
+<!--            <div class="f_group">-->
+<!--                <label for="amount"> Enter Amount</label>-->
+<!--                <input type="text" id="amount" th:field="*{amount}" placeholder="Enter Amount" />-->
+<!--                <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Incorrect Amount</div>-->
+<!--            </div>-->
 
-</body>
-</html>
+<!--            <div class="f_group">-->
+<!--                <label for="description">Memo</label>-->
+<!--                <input type="text" id="description" th:field="*{description}" placeholder="Description" />-->
+<!--                <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Incorrect memo description</div>-->
+<!--            </div>-->
+
+<!--                <button id="submit_form" type="submit">Send Money</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<section  class="t_section2">-->
+<!--    <h3>Recent Transactions</h3>-->
+<!--    <div class="notification_card">-->
+<!--        <div class="circle">-->
+<!--        </div>-->
+
+<!--        <div class="t_desc">-->
+<!--            <h5>First LastName</h5>-->
+<!--            <p>Amount: $20</p>-->
+<!--            <p>Description: Transfer sent to Polly</p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="notification_card">-->
+<!--        <div class="circle">-->
+<!--        </div>-->
+<!--        <div class="t_desc">-->
+<!--            <h5>First LastName</h5>-->
+<!--            <p>Amount: 300</p>-->
+<!--            <p>Description: Transfer between accounts</p>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--    <div class="notification_card">-->
+<!--        <div class="circle">-->
+<!--        </div>-->
+
+<!--        <div class="t_desc">-->
+<!--            <h5>First LastName</h5>-->
+<!--            <p>Amount: $20</p>-->
+<!--            <p>Description: Transfer sent to Laura</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+<!--    <div id="footer"></div>-->
+<!--    <script src="/js/load_nav_footer.js"></script>-->
+<!--</body>-->
+<!--</html>-->

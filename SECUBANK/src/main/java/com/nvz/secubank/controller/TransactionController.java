@@ -43,18 +43,18 @@ public class TransactionController {
             bindingResult.getAllErrors().forEach(error -> {
                 System.out.println("Error: " + error.getDefaultMessage());
             });
-            return "transfer";
+            return "transactions";
         }
 
         transactionService.makeTransferByEmail(transactionDto);
-        return "redirect:/home";
+        return "redirect:/users/account";
     }
 
 
     @GetMapping("/transferByEmail")
     public String showTransferForm(Model model) {
         model.addAttribute("transactionDto", new TransactionDto());
-        return "transfer";
+        return "transactions";
     }
 
     @GetMapping("/transferByAccountNum")

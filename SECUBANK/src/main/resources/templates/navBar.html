@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/static/css/navBar.css">
+<!--    <link rel="stylesheet" href="/static/css/navBar.css">-->
+    <link rel="stylesheet" th:href="@{/css/navBar.css}" href="/static/css/home.css">
 </head>
 <body>
 
 <nav class="nav_bar">
     <ul>
-        <li style="float:left; font-weight: bolder; font-size: 28px" class="nav_item"><a href="home.html" th:href="@{/accounts}">SECUBANK</a></li>
+        <li style="float:left; font-weight: bolder; font-size: 28px" class="nav_item"><a href="home.html" th:href="@{/users/accounts}">SECUBANK</a></li>
         <li class="nav_item"  style="margin-right: 5px"><a href="profile.html" th:href="@{/profile}">PROFILE</a></li>
-        <li class="nav_item"><a href="login.html" th:href="@{/login}">SIGN IN</a></li>
+        <li class="nav_item"><a href="login.html" th:href="@{/logout}">LOGOUT</a></li>
         <li class="nav_item"><a href="account.html" th:href="@{/userAccount}">ACCOUNT</a></li>
         <li class="nav_item"><a href="transactions.html" th:href="@{/transactions}">TRANSACTIONS</a></li>
     </ul>
 </nav>
 
-<script src="/static/js/load_nav_footer.js"></script>
+<script src="/js/load_nav_footer.js"></script>
 </body>
 </html>

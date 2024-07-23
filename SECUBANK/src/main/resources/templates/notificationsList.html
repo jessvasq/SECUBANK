@@ -3,31 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>SECUBANK</title>
+    <link rel="stylesheet" th:href="@{/css/notificationList.css}" href="/static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<h1>Notifications List</h1>
-    <div th:each="notification : ${notifications}">
-        <div th:if="${notification.read}">
-        </div>
+<!--<section class="n_section2">-->
+<div class="n_container">
+    <div class="inner_container1">
+    <!--    <div class="box">-->
+            <div  th:each="notification : ${notifications}">
+<!--                <div th:if="${notification.read}"></div>-->
 
-        <div th:unless="${notification.read}">
-            <table>
-                <tr>
-                    <th>Message</th>
-                    <th>Action</th>
-                </tr>
+                <div class="box" th:unless="${notification.read}">
+                    <div class="inner_box1">
+                        <img th:src="@{/images/img2.jpeg}" alt="notification_img"/>
+                    </div>
 
-                <tr>
-                    <td th:text="${notification.message}"></td>
-                    <td>
+                    <div class="inner_box2">
+                        <p th:text="${notification.message}"></p>
+                    </div>
+
+                    <div class="inner_box3">
                         <form th:action="@{/notifications/read/{id}(id=${notification.notificationID})}" method="POST">
-                            <button type="submit" th:disabled="${notification.read}">Mark as Read</button>
+                            <button class="read_btn" type="submit" th:disabled="${notification.read}"> <i class="fas fa-xmark"></i> </button>
                         </form>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
+                    </div>
+                </div>
+            </div>
     </div>
+
+    <div class="inner_container2">
+        <img th:src="@{/images/img1.jpeg}" alt="notifications_img"/>
+    </div>
+
+</div>
 </body>
 </html>

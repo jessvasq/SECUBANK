@@ -124,3 +124,25 @@ textarea::placeholder {
 .t_desc p {
     color: grey;
 }
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.f_group{
+    width: 80%;
+    text-align: left;
+    margin: 0 auto 10px auto;
+}
+
+.f_group label{
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 10%;
+}
+
+#transferContainer{
+    width: 90%;
+    margin: 0 auto 0 auto;
+}

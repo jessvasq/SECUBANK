@@ -2,61 +2,82 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SECUBANK</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<h1>Create Account</h1>
-<form method="POST" th:action="@{/register/save}" th:object="${user}">
-    <div>
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" th:field="*{firstName}" />
-        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</div>
+    <div class="login_container">
+        <section class="l_section1">
+            <h1>REGISTER</h1>
+            <form method="POST" th:action="@{/register/save}" th:object="${user}">
+                <div class="f_section1">
+                    <div class="f_group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" th:field="*{firstName}" />
+                        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</div>
+                    </div>
+                    <div class="f_group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" th:field="*{lastName}" />
+                        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</div>
+                    </div>
+                </div>
+
+                <div class="f_section1">
+                    <div class="f_group">
+                        <label for="userName">Username</label>
+                        <input type="text" id="userName" th:field="*{userName}" />
+                        <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Username Error</div>
+                    </div>
+                    <div class="f_group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" th:field="*{password}" />
+                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" th:field="*{email}" />
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+                </div>
+                <div class="f_group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" th:field="*{address}" />
+                    <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</div>
+                </div>
+                <div class="f_group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" id="phoneNumber" th:field="*{phoneNumber}" />
+                    <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</div>
+                </div>
+                <div class="f_group">
+                    <label for="profilePicture">Profile Picture</label>
+                    <input type="text" id="profilePicture" th:field="*{profilePicture}" />
+                </div>
+                <div class="f_group">
+                    <label for="language">Language</label>
+                    <input type="text" id="language" th:field="*{language}" />
+                </div>
+                <div class="f_group">
+                    <label for="ssn">Social Security Number</label>
+                    <input type="text" id="ssn" th:field="*{ssn}" />
+                </div>
+                <div>
+                    <button type="submit" class="submit_form">Register</button> </br>
+                </div>
+            </form>
+
+        <hr>
+
+            <button id="google_btn"><i  style="color: orangered" class="fab fa-google"></i> Sign in with Google </button>
+        <p class="details">By clicking continue, you agree to our <b style="color: rgba(7,10,5,0.73)">Terms of Service</b> and <b style="color: rgba(7,10,5,0.73)">Privacy Policy</b></p>
+        <p  class="details">Returning User? <a style="text-decoration: none; font-size: 14px" th:href="@{/login}">
+            <b style="color: orangered">Login here</b></a></p>
+        </section>
+
+        <section class="l_section2">
+            <img th:src="@{/images/img1.jpeg}" alt="login_img"/>
+        </section>
     </div>
-    <div>
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" th:field="*{lastName}" />
-        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</div>
-    </div>
-    <div>
-        <label for="userName">Username:</label>
-        <input type="text" id="userName" th:field="*{userName}" />
-        <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Username Error</div>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" th:field="*{password}" />
-        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
-    </div>
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" th:field="*{email}" />
-        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
-    </div>
-    <div>
-        <label for="address">Address:</label>
-        <input type="text" id="address" th:field="*{address}" />
-        <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</div>
-    </div>
-    <div>
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" th:field="*{phoneNumber}" />
-        <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</div>
-    </div>
-    <div>
-        <label for="profilePicture">Profile Picture:</label>
-        <input type="text" id="profilePicture" th:field="*{profilePicture}" />
-    </div>
-    <div>
-        <label for="language">Language:</label>
-        <input type="text" id="language" th:field="*{language}" />
-    </div>
-    <div>
-        <label for="ssn">Social Security Number:</label>
-        <input type="text" id="ssn" th:field="*{ssn}" />
-    </div>
-    <div>
-        <button type="submit">Register</button>
-    </div>
-</form>
 </body>
 </html>
