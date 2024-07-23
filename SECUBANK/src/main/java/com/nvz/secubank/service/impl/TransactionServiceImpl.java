@@ -2,6 +2,7 @@ package com.nvz.secubank.service.impl;
 
 import com.nvz.secubank.dto.TransactionDto;
 import com.nvz.secubank.entity.Account;
+import com.nvz.secubank.entity.Notification;
 import com.nvz.secubank.entity.Transaction;
 import com.nvz.secubank.entity.User;
 import com.nvz.secubank.entity.enumClasses.AccountType;
@@ -122,6 +123,11 @@ public class TransactionServiceImpl implements TransactionService {
         // persist changes
         accountRepository.save(fromAccount);
         accountRepository.save(toAccount);
+    }
+
+    @Override
+    public List<Transaction> getTransactionsByAccountId(Long accountId) {
+        return transactionRepository.findByAccount_AccountId(accountId);
     }
 
     private TransactionDto convertEntityToDto(Transaction transaction) {

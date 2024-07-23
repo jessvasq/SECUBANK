@@ -1,7 +1,9 @@
 package com.nvz.secubank.controller;
 
 import com.nvz.secubank.dto.AccountDto;
+import com.nvz.secubank.entity.Transaction;
 import com.nvz.secubank.service.AccountService;
+import com.nvz.secubank.service.TransactionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,8 +21,12 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    public AccountController(AccountService accountService) {
+    @Autowired
+    private final TransactionService transactionService;
+
+    public AccountController(AccountService accountService, TransactionService transactionService) {
         this.accountService = accountService;
+        this.transactionService = transactionService;
     }
 
     @GetMapping("/users/new")
@@ -65,6 +71,8 @@ public class AccountController {
     public String showAccountDetails(@PathVariable("id") Long id, Model model) {
         AccountDto accountDto = accountService.getAccountById(id);
         model.addAttribute("accountDto", accountDto);
+        List<Transaction> transactions = transactionService.getTransactionsByAccountId(id);
+        model.addAttribute("transactions", transactions);
         return "account";
     }
 }

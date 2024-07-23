@@ -60,36 +60,23 @@
 
     <section class="acc_section3">
         <table>
-            <tr>
-                <th>Amount</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Balance</th>
-            </tr>
-            <tr>
-                <td>$30</td>
-                <td>Speedway</td>
-                <td>07/15/2024</td>
-                <td>$10,320</td>
-            </tr>
-            <tr>
-                <td>$28</td>
-                <td>Mall</td>
-                <td>08/15/2024</td>
-                <td>$10,820</td>
-            </tr>
-            <tr>
-                <td>$100</td>
-                <td>Restaurant</td>
-                <td>08/17/2024</td>
-                <td>$10,320</td>
-            </tr>
-            <tr>
-                <td>$100</td>
-                <td>Restaurant</td>
-                <td>08/17/2024</td>
-                <td>$10,320</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.amount}"></td>
+                    <td th:text="${transaction.description}"></td>
+                    <td th:text="${transaction.date.toString().substring(0, 10)}">
+                    <td th:text="${transaction.account.balance}"></td>
+                </tr>
+            </tbody>
         </table>
     </section>
 </div>
