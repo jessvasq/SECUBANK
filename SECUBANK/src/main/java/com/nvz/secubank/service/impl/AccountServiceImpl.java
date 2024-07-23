@@ -1,5 +1,6 @@
 package com.nvz.secubank.service.impl;
 
+import com.nvz.secubank.service.NotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.nvz.secubank.dto.AccountDto;
@@ -10,6 +11,7 @@ import com.nvz.secubank.repository.UserRepository;
 import com.nvz.secubank.service.AccountService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -26,6 +28,9 @@ public class AccountServiceImpl implements AccountService {
     private UserRepository userRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
+
+    @Autowired
+    private NotificationService notificationService;
 
     @Override
     public void addAccount(AccountDto accountDto) {
@@ -49,6 +54,10 @@ public class AccountServiceImpl implements AccountService {
 
         // Save account to the db
         accountRepository.save(account);
+
+        //Generate low balance notification if needed
+        notificationService.generateBalanceNotification(user.getEmail());
+
         logger.info("Account successfully added for user email: {}", accountDto.getUserEmail());
     }
 

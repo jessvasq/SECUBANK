@@ -11,4 +11,5 @@ public interface NotificationService {
     void deleteNotification(Long notificationId);
     List<Notification> getNotificationsByUserEmail(String userEmail);
     void markNotificationAsRead(Long notificationId);
+    void generateBalanceNotification(String userEmail);
 }

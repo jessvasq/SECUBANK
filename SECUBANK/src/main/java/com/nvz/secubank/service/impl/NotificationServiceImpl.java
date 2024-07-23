@@ -1,5 +1,6 @@
 package com.nvz.secubank.service.impl;
 
+import com.nvz.secubank.entity.Account;
 import com.nvz.secubank.entity.Notification;
 import com.nvz.secubank.entity.User;
 import com.nvz.secubank.repository.NotificationRepository;
@@ -9,12 +10,15 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @Transactional
 public class NotificationServiceImpl implements NotificationService {
+
+    static final BigDecimal setLimit = new BigDecimal(100);
 
     @Autowired
     private NotificationRepository notificationRepository;
@@ -63,5 +67,26 @@ public class NotificationServiceImpl implements NotificationService {
         notificationRepository.save(notification);
     }
 
+    @Override
+    public void generateBalanceNotification(String userEmail) {
+        User user = userRepository.findByEmail(userEmail);
+        List<Account> accounts = user.getAccounts();
+
+        for (Account account : accounts) {
+            //check if the balance of an account is below the limit
+            if (account.getBalance().compareTo(setLimit) < 0 ){
+                String lowBalanceMsg = String.format("SecuBank: Low Balance Alert: %s, Your %s account", account.getBalance(), account.getAccountType().toString());
+
+                //generate notification
+                Notification notification = new Notification();
+                notification.setMessage(lowBalanceMsg);
+                notification.setTimestamp(LocalDateTime.now());
+                notification.setRead(false);
+                notification.setUser(user);
+
+                notificationRepository.save(notification);
+            }
+        }
+    }
 
 }
