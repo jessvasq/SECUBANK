@@ -20,13 +20,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AccountDto {
     private Long accountId;
-    @NotEmpty(message = "Please enter account number")
+//    @NotEmpty(message = "Please enter account number")
     private String accountNumber;
     @NotNull
     private BigDecimal balance;
     @NotEmpty
     private String currency;
-    @NotNull
+//    @NotNull
     private BigDecimal interestRate;
     private LocalDateTime createdAt;
 

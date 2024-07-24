@@ -62,7 +62,7 @@ public class AccountController {
                 System.out.println("Error: " + error.getDefaultMessage());
             });
             System.out.println("error");
-            return "newaccount";
+            return "home";
         }
         // Get the logged-in user's email from the security context
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

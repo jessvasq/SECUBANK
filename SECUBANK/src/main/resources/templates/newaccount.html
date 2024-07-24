@@ -2,42 +2,74 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SECUBANK</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="/static/css/home.css">
+    <script type="text/javascript" src="/js/load_nav_footer.js"  th:src="@{/js/load_nav_footer.js}" defer></script>
 </head>
+
+<div id="navbar"></div>
 <body>
-<h1>Create a New Bank Account</h1>
-<form th:action="@{/users/new}" th:object="${accountDto}" method="post">
-    <div>
-        <label for="accountNumber">Account Number:</label>
-        <input type="text" id="accountNumber" th:field="*{accountNumber}" placeholder="Enter account number" />
-        <div th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">Incorrect account number</div>
-    </div>
-    <div>
-        <label for="balance">Balance:</label>
-        <input type="number" id="balance" th:field="*{balance}" placeholder="Enter balance" />
-        <div th:if="${#fields.hasErrors('balance')}" th:errors="*{balance}">Incorrect balance</div>
-    </div>
-    <div>
-        <label for="currency">Currency:</label>
-        <input type="text" id="currency" th:field="*{currency}" placeholder="Enter currency" />
-        <div th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">Incorrect currency</div>
-    </div>
-    <div>
-        <label for="interestRate">Interest Rate:</label>
-        <input type="number" id="interestRate" th:field="*{interestRate}" placeholder="Enter interest rate" />
-        <div th:if="${#fields.hasErrors('interestRate')}" th:errors="*{interestRate}">Incorrect interest rate</div>
-    </div>
-    <div>
-        <label for="accountType">Account Type:</label>
-        <select id="accountType" th:field="*{accountType}">
-            <option value="" disabled selected>Select account type</option>
-            <option th:value="SAVINGS">Savings</option>
-            <option th:value="CHECKING">Checking</option>
-        </select>
-        <div th:if="${#fields.hasErrors('accountType')}" th:errors="*{accountType}">Select an account type</div>
-    </div>
-    <div>
-        <button type="submit">Create Account</button>
-    </div>
-</form>
+<div class="login_container">
+    <section class="l_section1">
+        <h1>Request New Bank Account</h1>
+        <form th:action="@{/users/new}" th:object="${accountDto}" method="post">
+<!--            <div class="f_group">-->
+<!--                <label for="accountNumber">Account Number</label>-->
+<!--                <input type="text" id="accountNumber" th:field="*{accountNumber}" placeholder="Enter account number" />-->
+<!--                <div th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">Incorrect account number</div>-->
+<!--            </div>-->
+            <div class="f_group">
+                <label for="balance">Amount</label>
+                <input type="number" id="balance" th:field="*{balance}" placeholder="Enter balance" />
+                <div th:if="${#fields.hasErrors('balance')}" th:errors="*{balance}">Incorrect balance</div>
+            </div>
+
+            <div class="f_group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="Enter first Name" />
+            </div>
+
+            <div class="f_group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="Enter last Name" />
+            </div>
+
+            <div class="f_group">
+                <label for="ssn">Social Security Number </label>
+                <input type="text" id="ssn" placeholder="Enter your social security number" />
+            </div>
+
+            <div class="f_group">
+                <label for="currency">Currency</label>
+                <input type="text" id="currency" th:field="*{currency}" placeholder="Enter currency" />
+                <div th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">Incorrect currency</div>
+            </div>
+<!--            <div class="f_group">-->
+<!--                <label for="interestRate">Interest Rate</label>-->
+<!--                <input type="number" id="interestRate" th:field="*{interestRate}" placeholder="Enter interest rate" />-->
+<!--                <div th:if="${#fields.hasErrors('interestRate')}" th:errors="*{interestRate}">Incorrect interest rate</div>-->
+<!--            </div>-->
+            <div>
+                <label for="accountType">Account Type</label>
+                <select id="accountType" th:field="*{accountType}">
+                    <option value="" disabled selected>Select account type</option>
+                    <option th:value="SAVINGS">Savings</option>
+                    <option th:value="CHECKING">Checking</option>
+                </select>
+                <div th:if="${#fields.hasErrors('accountType')}" th:errors="*{accountType}">Select an account type</div>
+            </div>
+            <div>
+                <button id="submit_form" type="submit">Create Account</button>
+            </div>
+        </form>
+    </section>
+    <section class="l_section2">
+<!--        <img th:src="@{/images/img1.jpeg}" alt="login_img"/>-->
+        <video width='400' height='auto' autoplay muted>
+            <source th:src="@{/images/credit_card_video.mp4}" type="video/mp4">
+        </video>
+    </section>
+</div>
+
+<div id="footer"></div>
 </body>
 </html>

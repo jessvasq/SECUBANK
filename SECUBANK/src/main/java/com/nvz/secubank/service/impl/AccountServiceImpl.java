@@ -14,6 +14,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +27,10 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
+
+    public static final int ACCOUNT_NUMBER_LENGTH = 12;
+    private final SecureRandom random = new SecureRandom();
+
     @Autowired
     private AccountRepository accountRepository;
 
@@ -50,12 +56,19 @@ public class AccountServiceImpl implements AccountService {
             throw new UsernameNotFoundException("User not found with email: " + accountDto.getUserEmail());
         }
 
+        String uniqueAccNumber = generateAccountNumber();
+
         // Create a new Account entity
         Account account = new Account();
-        account.setAccountNumber(accountDto.getAccountNumber());
+        account.setAccountNumber(uniqueAccNumber);
+        System.out.println("Generated account number: " + uniqueAccNumber);
         account.setBalance(accountDto.getBalance());
         account.setCurrency(accountDto.getCurrency());
-        account.setInterestRate(accountDto.getInterestRate());
+
+        if (accountDto.getInterestRate() != null){
+            account.setInterestRate(accountDto.getInterestRate());
+        }
+//        account.setInterestRate(accountDto.getInterestRate());
         account.setCreatedAt(LocalDateTime.now());
         account.setAccountType(accountDto.getAccountType());
 
@@ -70,6 +83,26 @@ public class AccountServiceImpl implements AccountService {
         notificationService.generateBalanceNotification(user.getEmail());
 
         logger.info("Account successfully added for user email: {}", accountDto.getUserEmail());
+    }
+
+    /**
+     * Helper method to generate a unique account number
+     * Method looks by account number ensuring that the account number is unique
+     * @return account number
+     */
+    public String generateAccountNumber() {
+        String randomAccountNumber;
+        Account accountObj;
+
+        do {
+            StringBuilder sb= new StringBuilder();
+            for (int i = 0; i < ACCOUNT_NUMBER_LENGTH; i++){
+                sb.append(random.nextInt(10));
+            }
+            randomAccountNumber = sb.toString();
+            accountObj = accountRepository.findByAccountNumber(randomAccountNumber);
+        } while (accountObj != null);
+        return randomAccountNumber;
     }
 
     /**
@@ -113,6 +146,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public AccountDto getAccountById(Long accountId) {
         return convertEntityToDto(accountRepository.findById(accountId).get());
+    }
+
+    @Override
+    public Account getAccountByAccountNumber(String accountNumber) {
+        return accountRepository.findAccountByAccountNumber(accountNumber);
     }
 
     /**

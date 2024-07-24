@@ -25,13 +25,14 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
 
-    @Column(unique=true, nullable=false, length=12)
+//    @Column(unique=true, nullable=false, length=12)
+    @Column(unique=true, length=12)
     private String accountNumber;
     @Column(nullable=false)
     private BigDecimal balance;
     @Column(nullable=false)
     private String currency;
-    @Column(nullable=false)
+    @Column
     private BigDecimal interestRate;
     private LocalDateTime createdAt; //date account was created
 

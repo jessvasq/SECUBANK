@@ -1,6 +1,7 @@
 package com.nvz.secubank.service;
 
 import com.nvz.secubank.dto.AccountDto;
+import com.nvz.secubank.entity.Account;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,4 +16,5 @@ public interface AccountService {
     void removeAccountById(Long accountId);
     List<AccountDto> getAccountsByEmail(String email);
     AccountDto getAccountById(Long accountId);
+    Account getAccountByAccountNumber(String accountNumber);
 }
