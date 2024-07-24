@@ -29,5 +29,7 @@ public class AccountDto {
     @NotNull(message = "Please select an account type")
     private AccountType accountType;
 
+    private BigDecimal prevBalance;
+
     private String userEmail; //reference to the user
 }

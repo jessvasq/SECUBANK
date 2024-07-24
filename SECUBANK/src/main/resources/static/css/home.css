@@ -183,3 +183,125 @@
     h5{
         margin-bottom: 0;
     }
+
+
+    .section3 {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding: 15px;
+    }
+
+    .article_main_container {
+        display: flex;
+        gap: 15px;
+
+    }
+
+    .article_container {
+        flex: 0 0 auto; /* Prevent items from shrinking or growing */
+        width: 300px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        height: fit-content;
+    }
+
+    .article_container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 15px;
+    }
+
+    .article_container  h4 {
+        font-size: 1.25rem;
+        margin: 10px 0;
+        color: #333;
+    }
+
+    .article_container  p {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: #666;
+        overflow: hidden;
+    }
+
+
+    .qa_section {
+        margin-top: 3%;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ddd;
+    }
+
+    .qa_section h2 {
+        font-size: 1.75rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+
+    .qa_container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .qa_item {
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+    }
+
+
+    .qa_q {
+        font-size: 1.25rem;
+        color: #444;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .qa_a {
+        padding-top: 10px;
+    }
+
+    .qa_a p {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+    }
+
+
+    .howTo_section{
+        display: flex;
+        width: 80%;
+        margin: 3% auto 0 auto;
+    }
+
+    .howTo_container{
+        flex:1;
+        width: 50%;
+        margin: 0 auto 0 auto;
+    }
+
+    .howTo_container1{
+        flex:1;
+        width: 50%;
+        margin: 0 auto 0 auto;
+    }
+
+    .h_q{
+        font-size: 18px;
+        color: #444;
+    }
+
+    .h_a{
+        padding-top: 10px;
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+    }

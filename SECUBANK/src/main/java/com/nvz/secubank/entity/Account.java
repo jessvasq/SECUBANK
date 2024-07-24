@@ -29,6 +29,8 @@ public class Account {
     private BigDecimal interestRate;
     private LocalDateTime createdAt; //date account was created
 
+    private BigDecimal prevBalance;
+
     @Enumerated(EnumType.STRING) // enum values should be stored as strings in the db
     @Column(nullable=false, length=50)
     private AccountType accountType;

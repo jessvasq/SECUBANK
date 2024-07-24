@@ -50,6 +50,9 @@ public class AccountServiceImpl implements AccountService {
         account.setInterestRate(accountDto.getInterestRate());
         account.setCreatedAt(LocalDateTime.now());
         account.setAccountType(accountDto.getAccountType());
+
+        account.setPrevBalance(accountDto.getPrevBalance());
+
         account.setUser(user); //associate the account with the user
 
         // Save account to the db
@@ -94,6 +97,8 @@ public class AccountServiceImpl implements AccountService {
         accountDto.setInterestRate(account.getInterestRate());
         accountDto.setCreatedAt(account.getCreatedAt());
         accountDto.setAccountType(account.getAccountType());
+
+        accountDto.setPrevBalance(account.getPrevBalance());
 
         return accountDto;
     }

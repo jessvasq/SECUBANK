@@ -74,7 +74,17 @@
                     <td th:text="${transaction.amount}"></td>
                     <td th:text="${transaction.description}"></td>
                     <td th:text="${transaction.date.toString().substring(0, 10)}">
-                    <td th:text="${transaction.account.balance}"></td>
+<!--                    <td th:text="${transaction.account.prevBalance}">-->
+                    <td style="text-align: right">
+                    <div style="display: flex; justify-content: flex-end; align-items: center;">
+                        <p style="margin: 0;">$</p>
+                        <p style="margin: 0; margin-left: 5px; font-weight: bold" th:text="${transaction.account.balance}"></p>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 5px; ">
+                        <p style="margin: 0;">$</p>
+                        <p style="margin: 0; margin-left: 5px;" th:text="${transaction.account.prevBalance}"></p>
+                    </div>
+                </td>
                 </tr>
             </tbody>
         </table>

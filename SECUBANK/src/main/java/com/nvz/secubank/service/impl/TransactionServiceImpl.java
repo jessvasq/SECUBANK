@@ -76,7 +76,12 @@ public class TransactionServiceImpl implements TransactionService {
     public void processTransfer(Account fromAccount, Account toAccount, TransactionDto transactionDto) {
         // perform transaction using the compareTo method as both values are BigDecimal. Check if the balance is greater or equal than the amount
         if (fromAccount.getBalance().compareTo(transactionDto.getAmount()) >= 0){
+
+            fromAccount.setPrevBalance(fromAccount.getBalance());
+
             fromAccount.setBalance(fromAccount.getBalance().subtract(transactionDto.getAmount()));
+            toAccount.setPrevBalance(toAccount.getBalance());
+
             toAccount.setBalance(toAccount.getBalance().add(transactionDto.getAmount()));
             System.out.println("successful transfer");
         } else {
