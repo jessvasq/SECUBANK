@@ -1,0 +1,29 @@
+2024-07-24T10:45:54.815-04:00  INFO 16280 --- [SECUBANK] [restartedMain] com.nvz.secubank.SecubankApplication     : Starting SecubankApplication using Java 22.0.1 with PID 16280 (C:\Users\jessn\LearningJava\capstone\SECUBANK\SECUBANK\target\classes started by jessn in C:\Users\jessn\LearningJava\capstone\SECUBANK\SECUBANK)
+2024-07-24T10:45:54.819-04:00  INFO 16280 --- [SECUBANK] [restartedMain] com.nvz.secubank.SecubankApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-07-24T10:45:54.869-04:00  INFO 16280 --- [SECUBANK] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-24T10:45:54.870-04:00  INFO 16280 --- [SECUBANK] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-24T10:45:55.637-04:00  INFO 16280 --- [SECUBANK] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-24T10:45:55.720-04:00  INFO 16280 --- [SECUBANK] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 75 ms. Found 7 JPA repository interfaces.
+2024-07-24T10:45:56.299-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8088 (http)
+2024-07-24T10:45:56.310-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-24T10:45:56.311-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-24T10:45:56.368-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.a.c.c.C.[.[localhost].[/secubank]      : Initializing Spring embedded WebApplicationContext
+2024-07-24T10:45:56.368-04:00  INFO 16280 --- [SECUBANK] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1497 ms
+2024-07-24T10:45:56.526-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-24T10:45:56.579-04:00  INFO 16280 --- [SECUBANK] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-24T10:45:56.609-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-24T10:45:56.905-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-24T10:45:56.929-04:00  INFO 16280 --- [SECUBANK] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-24T10:45:57.214-04:00  INFO 16280 --- [SECUBANK] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a8ec8c
+2024-07-24T10:45:57.217-04:00  INFO 16280 --- [SECUBANK] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-24T10:45:57.264-04:00  WARN 16280 --- [SECUBANK] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-24T10:45:58.279-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-24T10:45:58.407-04:00  INFO 16280 --- [SECUBANK] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-24T10:45:58.827-04:00  WARN 16280 --- [SECUBANK] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-24T10:45:58.842-04:00  WARN 16280 --- [SECUBANK] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-07-24T10:45:59.303-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-07-24T10:45:59.342-04:00  INFO 16280 --- [SECUBANK] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8088 (http) with context path '/secubank'
+2024-07-24T10:45:59.349-04:00  INFO 16280 --- [SECUBANK] [restartedMain] com.nvz.secubank.SecubankApplication     : Started SecubankApplication in 5.025 seconds (process running for 5.934)
+2024-07-24T10:46:47.736-04:00  INFO 16280 --- [SECUBANK] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-24T10:46:47.739-04:00  INFO 16280 --- [SECUBANK] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-24T10:46:47.744-04:00  INFO 16280 --- [SECUBANK] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

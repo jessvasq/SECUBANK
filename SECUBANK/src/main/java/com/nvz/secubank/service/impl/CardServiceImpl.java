@@ -9,6 +9,7 @@ import com.nvz.secubank.repository.CardRepository;
 import com.nvz.secubank.repository.UserRepository;
 import com.nvz.secubank.service.CardService;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ import java.time.YearMonth;
 /**
  * Override CardService methods and provide business logic
  */
+@Slf4j
 @Service
 @Transactional
 public class CardServiceImpl implements CardService {

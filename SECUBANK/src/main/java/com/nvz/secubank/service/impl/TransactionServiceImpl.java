@@ -12,6 +12,7 @@ import com.nvz.secubank.repository.UserRepository;
 import com.nvz.secubank.service.NotificationService;
 import com.nvz.secubank.service.TransactionService;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 /**
  * Override TransactionService methods and provide business logic
  */
+@Slf4j
 @Service
 @Transactional
 public class TransactionServiceImpl implements TransactionService {

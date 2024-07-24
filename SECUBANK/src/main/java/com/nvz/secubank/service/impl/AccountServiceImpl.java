@@ -1,6 +1,7 @@
 package com.nvz.secubank.service.impl;
 
 import com.nvz.secubank.service.NotificationService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.nvz.secubank.dto.AccountDto;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 /**
  * Override AccountService methods and provide business logic
  */
+@Slf4j
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
