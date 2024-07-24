@@ -16,6 +16,9 @@ import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
+/**
+ * Override CardService methods and provide business logic
+ */
 @Service
 @Transactional
 public class CardServiceImpl implements CardService {
@@ -26,6 +29,10 @@ public class CardServiceImpl implements CardService {
     @Autowired
     private AccountRepository accountRepository;
 
+    /**
+     * Takes input data from the client side, generates a random security code and persist Card data to the db
+     * @param cardDto
+     */
     @Override
     public void addCard(CardDto cardDto) {
         //get the account number from Account object and create card
@@ -72,18 +79,4 @@ public class CardServiceImpl implements CardService {
 
     }
 
-    @Override
-    public CardDto getCardByCardNumber(String cardNumber) {
-        return null;
-    }
-
-    @Override
-    public CardDto updateCard(Long cardId, CardDto cardDto) {
-        return null;
-    }
-
-    @Override
-    public void revokeCard(Long cardId) {
-
-    }
 }

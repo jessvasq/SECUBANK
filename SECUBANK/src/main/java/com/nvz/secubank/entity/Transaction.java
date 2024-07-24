@@ -8,6 +8,11 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+
+/**
+ * Transaction entity stores all transactions made by the user
+ * ManyToOne relationship with Account entity
+ */
 @Getter
 @Setter
 @NoArgsConstructor

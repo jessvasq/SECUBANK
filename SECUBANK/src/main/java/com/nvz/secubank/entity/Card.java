@@ -7,6 +7,10 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+/**
+ * Card entity stores credit and debit card accounts information
+ * OneToOne relationship with Account
+ */
 @Getter
 @Setter
 @NoArgsConstructor

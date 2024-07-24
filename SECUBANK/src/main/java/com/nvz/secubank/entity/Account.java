@@ -7,6 +7,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Account entity stores different bank accounts
+ * ManyToOne relationship with User
+ * OneToMany relationship with Transaction
+ * OneToOne relationship with Card
+ */
 @Setter
 @Getter
 @NoArgsConstructor

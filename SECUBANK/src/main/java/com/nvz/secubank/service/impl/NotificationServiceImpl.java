@@ -14,6 +14,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Override NotificationService methods and provide business logic
+ */
 @Service
 @Transactional
 public class NotificationServiceImpl implements NotificationService {
@@ -26,6 +29,10 @@ public class NotificationServiceImpl implements NotificationService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * @param userEmail Fetch current logged-in user's email
+     * @param message takes input data to create and persist a Notification
+     */
     @Override
     public void saveNotification(String userEmail, String message) {
         //find the logged-in user by its email
@@ -45,11 +52,18 @@ public class NotificationServiceImpl implements NotificationService {
 
     }
 
+    /**
+     * @param notificationId Fetch a notification by its id and deletes it from the db
+     */
     @Override
     public void deleteNotification(Long notificationId) {
        notificationRepository.deleteById(notificationId);
     }
 
+    /**
+     * @param userEmail Fetch a user by its email
+     * @return a list of Notifications associated to the current logged-in user
+     */
     @Override
     public List<Notification> getNotificationsByUserEmail(String userEmail) {
         User user = userRepository.findByEmail(userEmail);
@@ -60,6 +74,10 @@ public class NotificationServiceImpl implements NotificationService {
         return notificationRepository.findByUser(user);
     }
 
+    /**
+     * @param notificationId Fetch a notification by its id
+     * mark 'read' property to true and persist to DB
+     */
     @Override
     public void markNotificationAsRead(Long notificationId) {
         Notification notification = notificationRepository.findById(notificationId).get();
@@ -67,6 +85,11 @@ public class NotificationServiceImpl implements NotificationService {
         notificationRepository.save(notification);
     }
 
+    /**
+     *
+     * @param userEmail Fetch current logged-in user's email
+     * Iterate through the user accounts, check its balance and generate a notification if the balance is low
+     */
     @Override
     public void generateBalanceNotification(String userEmail) {
         User user = userRepository.findByEmail(userEmail);

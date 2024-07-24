@@ -12,6 +12,11 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
+
+/**
+ * Data Transfer Object used to transfer data between the client and db
+ * used to validate data before it's processed, included necessary fields only
+ */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -20,6 +20,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Override TransactionService methods and provide business logic
+ */
 @Service
 @Transactional
 public class TransactionServiceImpl implements TransactionService {
@@ -33,6 +36,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private NotificationService notificationService;
 
+    /**
+     * @param transactionDto takes transactionDto and fetches accounts to perform transaction
+     * invokes 'processTransfer' method to perform the internal transaction
+     */
     @Override
     public void makeTransfer(TransactionDto transactionDto) {
         Account fromAccount = accountRepository.findByAccountNumber(transactionDto.getFromAccountNumber());
@@ -43,6 +50,10 @@ public class TransactionServiceImpl implements TransactionService {
         processTransfer(fromAccount, toAccount, transactionDto);
     }
 
+    /**
+     * @param transactionDto takes transactionDto and fetches accounts to perform transaction
+     * invokes 'processTransfer' method to perform the external transaction
+     */
     @Override
     public void makeTransferByEmail(TransactionDto transactionDto){
         Account fromAccount = accountRepository.findByAccountNumber(transactionDto.getFromAccountNumber());
@@ -71,7 +82,11 @@ public class TransactionServiceImpl implements TransactionService {
         processTransfer(fromAccount, toAccount, transactionDto);
     }
 
-    // External Transfers
+    /**
+     * @param fromAccount sender's account information
+     * @param toAccount receiver's account information
+     * @param transactionDto create and persist transaction to the DB
+     */
     @Override
     public void processTransfer(Account fromAccount, Account toAccount, TransactionDto transactionDto) {
         // perform transaction using the compareTo method as both values are BigDecimal. Check if the balance is greater or equal than the amount
@@ -97,7 +112,7 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setDescription(transactionDto.getDescription());
         transaction.setStatus(transactionDto.getStatus());
         transaction.setTransactionType(transactionDto.getTransactionType());
-        // Associate transaction with the fromAccount
+        // Associate transaction to fromAccount
         transaction.setAccount(fromAccount);
 
         transactionRepository.save(transaction);
@@ -130,11 +145,18 @@ public class TransactionServiceImpl implements TransactionService {
         accountRepository.save(toAccount);
     }
 
+    /**
+     * @param accountId get all transactions for an individual account
+     * @return list of transactions
+     */
     @Override
     public List<Transaction> getTransactionsByAccountId(Long accountId) {
         return transactionRepository.findByAccount_AccountId(accountId);
     }
 
+    /**
+     * Convert Transaction to DTO
+     */
     private TransactionDto convertEntityToDto(Transaction transaction) {
         TransactionDto transactionDto = new TransactionDto();
         transactionDto.setTransactionId(transaction.getTransactionId());

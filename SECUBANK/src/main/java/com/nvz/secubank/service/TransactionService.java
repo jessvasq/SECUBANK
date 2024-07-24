@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
+/**
+ * Define methods and abstracts the business logic
+ */
 @Component
 public interface TransactionService {
     void makeTransfer(TransactionDto transactionDto);

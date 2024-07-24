@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Repository Class that extends JpaRepository which provides Built-in CRUD operations methods
+ * Custom methods
+ */
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
     List<Transaction> findByTransactionId(long transactionId);

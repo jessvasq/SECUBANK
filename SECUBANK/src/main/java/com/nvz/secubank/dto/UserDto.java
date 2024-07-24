@@ -10,10 +10,10 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-/*
-DTOs carry data from the client-side to the server-side
+/**
+ * Data Transfer Object used to transfer data between the client and db
+ * used to validate data before it's processed, included necessary fields only
  */
-
 @Getter
 @Setter
 @NoArgsConstructor

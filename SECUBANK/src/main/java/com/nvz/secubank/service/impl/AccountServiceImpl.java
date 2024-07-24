@@ -11,13 +11,15 @@ import com.nvz.secubank.repository.UserRepository;
 import com.nvz.secubank.service.AccountService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Override AccountService methods and provide business logic
+ */
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
@@ -32,6 +34,10 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private NotificationService notificationService;
 
+    /**
+     * Saves an account to the DB
+     * @param accountDto
+     */
     @Override
     public void addAccount(AccountDto accountDto) {
         logger.info("Adding account for user email: {}", accountDto.getUserEmail());
@@ -64,6 +70,11 @@ public class AccountServiceImpl implements AccountService {
         logger.info("Account successfully added for user email: {}", accountDto.getUserEmail());
     }
 
+    /**
+     * Gets users by userId and returns a list of Accounts associated to the user
+     * @param userId
+     * @return
+     */
     @Override
     public List<AccountDto> getAccountsByUserId(Long userId) {
         List<Account> accounts = accountRepository.findByUser_userId((userId));
@@ -71,23 +82,42 @@ public class AccountServiceImpl implements AccountService {
         return accounts.stream().map((account) -> convertEntityToDto(account)).collect(Collectors.toList());
     }
 
+    /**
+     * Removes account by its id
+     * @param accountId
+     */
     @Override
     public void removeAccountById(Long accountId) {
         accountRepository.deleteById(accountId);
 
     }
 
+    /**
+     * Fetches accounts by email and returns a list of accounts associated to the provided email
+     * @param email
+     * @return
+     */
     @Override
     public List<AccountDto> getAccountsByEmail(String email) {
       List<Account> accounts = accountRepository.findByUser_email(email);
         return accounts.stream().map((account) -> convertEntityToDto(account)).collect(Collectors.toList());
     }
 
+    /**
+     * Fetches and returns an account by ist id
+     * @param accountId
+     * @return
+     */
     @Override
     public AccountDto getAccountById(Long accountId) {
         return convertEntityToDto(accountRepository.findById(accountId).get());
     }
 
+    /**
+     * Converts a Account entity to AccountDTO
+     * @param account
+     * @return
+     */
     private AccountDto convertEntityToDto(Account account) {
         AccountDto accountDto = new AccountDto();
         accountDto.setAccountId(account.getAccountId());

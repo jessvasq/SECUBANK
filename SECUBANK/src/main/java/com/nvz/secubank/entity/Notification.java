@@ -7,6 +7,10 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * Card entity stores notifications sent to users
+ * ManyToOne relationship with User
+ */
 @Getter
 @Setter
 @NoArgsConstructor

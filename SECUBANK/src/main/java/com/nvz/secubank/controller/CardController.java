@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+/**
+ * Manages incoming requests and handles responses
+ * Binds incoming requests data to objects or DTOs for validation
+ * Selects and returns a view
+ */
 @Controller
 public class CardController {
 
@@ -21,6 +26,13 @@ public class CardController {
         this.cardService = cardService;
     }
 
+    /**
+     * Handles post requests
+     * @param card holds the form data
+     * @param bindingResult holds results of the validation process
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @PostMapping("/users/card")
     public String addCard(@ModelAttribute("card") @Valid CardDto card, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -33,7 +45,11 @@ public class CardController {
         return "redirect:/users/accounts";
     }
 
-
+    /**
+     * Handles get requests to the method
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/users/card")
     public String showCards(Model model) {
         CardDto card = new CardDto();

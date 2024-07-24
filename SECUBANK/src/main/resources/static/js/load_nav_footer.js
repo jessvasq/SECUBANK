@@ -25,15 +25,18 @@
 // }
 
 
+//select div and store it in a constant 'navHeader', reference does not change
 const navHeader = document.getElementById("navbar");
 
-// DOMContentLoaded loads the header as soon as the HTML is loaded, js script inserts the header before the user interacts with the page
+// DOMContentLoaded loads the header as soon as the HTML is loaded, js script inserts the header before the user interacts with the page. call loadNav when the event occurs
 document.addEventListener("DOMContentLoaded", loadNav);
 
+//makes the request to the given endpoint, retrieve the response and insert into the htmlElement
 function loadNav(){
+    //fetch the 'API' used to make network requests. Sending a get request
     fetch("/secubank/nav")
-        .then(response => response.text())
-        .then(data => {
+        .then(response => response.text())//reads the response body as plain text
+        .then(data => { //execute the function once the content is available
             navHeader.innerHTML = data;
         })
 }

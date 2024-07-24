@@ -14,6 +14,9 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+/**
+ * Provides user-specific info to SpringSecurity for authentication and authorization
+ */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -25,8 +28,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    /*
-    Finds user by username and loads the data needed for authentication
+    /**
+     *
+     * This method overrides a method in the 'userDetailsService'
+     * Finds user by username and loads the data needed for authentication
      */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -42,16 +47,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 ////******* this works *******
 
             ////***testing the below for bank account creation****////
+            // return an object that implements the 'userDetails' interface containing the required user details
             return new CustomUserDetails(user);
         } else {
             throw new UsernameNotFoundException("Invalid email or password");
         }
     }
 
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        Collection<? extends GrantedAuthority> mapRoles = roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toList());
-        return mapRoles;
-    }
+//    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+//        Collection<? extends GrantedAuthority> mapRoles = roles.stream()
+//                .map(role -> new SimpleGrantedAuthority(role.getName()))
+//                .collect(Collectors.toList());
+//        return mapRoles;
+//    }
 }

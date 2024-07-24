@@ -5,6 +5,10 @@ import lombok.*;
 
 import java.util.List;
 
+/**
+ * Role entity stores roles associated to a User
+ * ManyToMany relationship with User
+ */
 @Getter
 @Setter
 @NoArgsConstructor

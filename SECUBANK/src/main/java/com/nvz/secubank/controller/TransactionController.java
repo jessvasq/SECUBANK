@@ -22,6 +22,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+/**
+ * Manages incoming requests and handles responses
+ * Binds incoming requests data to objects or DTOs for validation
+ * Selects and returns a view
+ */
 @Controller
 public class TransactionController {
     //inject service
@@ -31,6 +36,13 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
+    /**
+     * Handles post requests
+     * @param transactionDto holds the form data
+     * @param bindingResult holds results of the validation process
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @PostMapping("/transferByAccountNum")
     public String transferFunds(@ModelAttribute("transaction") @Valid TransactionDto transactionDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
@@ -44,6 +56,13 @@ public class TransactionController {
         return "redirect:/users/accounts";
     }
 
+    /**
+     * Handles post requests
+     * @param transactionDto holds the form data
+     * @param bindingResult holds results of the validation process
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @PostMapping("/transferByEmail")
     public String sendTransaction(@ModelAttribute("transaction") TransactionDto transactionDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
@@ -58,13 +77,22 @@ public class TransactionController {
         return "redirect:/users/account";
     }
 
-
+    /**
+     * Maps get requests with url 'users/new' to the method
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/transferByEmail")
     public String showTransferForm(Model model) {
         model.addAttribute("transactionDto", new TransactionDto());
         return "transactions";
     }
 
+    /**
+     * Maps get requests with url 'users/new' to the method
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/transferByAccountNum")
     public String showTransactionForm(Model model) {
         model.addAttribute("transactionDto", new TransactionDto());

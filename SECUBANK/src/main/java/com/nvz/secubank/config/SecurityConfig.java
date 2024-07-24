@@ -11,6 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * Defines custom security configurations (authentication and authorization)
+ * '@Configuration' enables Spring to manage its beans and components
+ * '@EnableWebSecurity' enables web security and configuration
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -27,7 +32,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     } //uses BCrypt hashing function
 
-    /*
+    /**
     This method takes a 'HttpSecurity' object as a param and returns a 'SecurityFilterChain' which applies security to HTTP requests
      */
     @Bean
@@ -36,7 +41,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/public/**").permitAll()
                         .requestMatchers("/register/**").permitAll() //anyone can access this endpoint
-                        .requestMatchers("/users/**").permitAll()
+                        .requestMatchers("/login/**").permitAll() //anyone can access this endpoint
+                        .requestMatchers("/users/**").hasRole("USER")
                         .requestMatchers("/accounts/**").hasRole("USER")//restrict access to the '/accounts' endpoint to users with 'USER' role
                         .anyRequest().authenticated() // all other requests can only be accessed by authenticated users
                 )
@@ -54,10 +60,15 @@ public class SecurityConfig {
                 return http.build(); //builds the 'HttpSecurity' config and returns the 'securityFilterChain' object
     }
 
+    /**
+     * Configures global authentication settings
+     * @param auth used to build and configure the authentication manager, allows user details setup and password encoding
+     * @throws Exception if there's an error
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(customUserDetailsService)
-                .passwordEncoder(passwordEncoder());
+                .userDetailsService(customUserDetailsService)//use custom 'userDetailsService' to load user data
+                .passwordEncoder(passwordEncoder()); //encodes and decodes passwords
     }
 }

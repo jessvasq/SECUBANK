@@ -11,6 +11,11 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+
+/**
+ * Data Transfer Object used to transfer data between the client and db
+ * used to validate data before it's processed, included necessary fields only
+ */
 @Getter
 @Setter
 @NoArgsConstructor

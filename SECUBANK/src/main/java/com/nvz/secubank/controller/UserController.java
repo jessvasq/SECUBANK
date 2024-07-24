@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.BindingResult;
 import java.util.List;
 
+/**
+ * Manages incoming requests and handles responses
+ * Binds incoming requests data to objects or DTOs for validation
+ * Selects and returns a view
+ */
 @Controller
 public class UserController {
     @Autowired
@@ -22,6 +27,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Maps get requests with url 'users/new' to the method
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         UserDto user = new UserDto();
@@ -29,6 +39,13 @@ public class UserController {
         return "register";
     }
 
+    /**
+     * Handles post requests
+     * @param userDto holds the form data
+     * @param bindingResult holds results of the validation process
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @PostMapping ("/register/save")
     public String registerUser(@Valid @ModelAttribute("user") UserDto userDto, BindingResult bindingResult, Model model) {
         User userExist = userService.findByEmail(userDto.getEmail());
@@ -41,16 +58,11 @@ public class UserController {
         return "redirect:/users/accounts";
     }
 
-//    @GetMapping("/login")
-//    public String login() {
-//        return "login";
-//    }
-//
-//    @GetMapping("/home")
-//    public String home() {
-//        return "home";
-//    }
-
+    /**
+     * Handles post requests
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/accounts")
     public String accounts(Model model) {
         List<UserDto> users = userService.getAllUsers();
@@ -58,6 +70,11 @@ public class UserController {
         return "account";
     }
 
+    /**
+     * Maps get requests with url 'users/new' to the method
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/users")
     public String users(Model model) {
         List<UserDto> users = userService.getAllUsers();
@@ -65,6 +82,13 @@ public class UserController {
         return "users";
     }
 
+    /**
+     * Handles post requests
+     * @param userDto holds the form data
+     * @param bindingResult holds results of the validation process
+     * @param model used to pass data to the view
+     * @return
+     */
     @PostMapping("/updateUser")
     public String updateUserProfile(@ModelAttribute("user") @Valid UserDtoUpdate userDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -81,15 +105,11 @@ public class UserController {
         return "redirect:/profile";
     }
 
-//    @GetMapping("/profile")
-//    public String showUserDetails(Model model) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String userEmail = authentication.getName();
-//        User user = userService.findByEmail(userEmail);
-//        model.addAttribute("user", user);
-//        return "profile";
-//    }
-
+    /**
+     * Maps get requests with url 'users/new' to the method
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/profile")
     public String profile(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -100,6 +120,11 @@ public class UserController {
         return "profile";
     }
 
+    /**
+     * Maps get requests with url 'users/new' to the method
+     * @param model used to pass data to the view
+     * @return string that represents name of the view to render
+     */
     @GetMapping("/updateUser")
     public String showUpdateUserForm(Model model) {
         UserDto userDto = new UserDto();

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Repository Class that extends JpaRepository which provides Built-in CRUD operations methods
+ * Custom methods
+ */
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     Account findByAccountNumber(String accountNumber);

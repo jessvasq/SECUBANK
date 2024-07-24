@@ -7,6 +7,12 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * User entity stores user information
+ * ManyToMany relationship with Roles
+ * OneToMany relationship with Account
+ * OneToMany relationship with Notification
+ */
 @Getter
 @Setter
 @NoArgsConstructor
