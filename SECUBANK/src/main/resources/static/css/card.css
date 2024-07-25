@@ -26,9 +26,10 @@ body {
 .acc_card2{
     width: 40%;
     height: fit-content;
-    box-shadow: none;
+    /*box-shadow: none;*/
     background: radial-gradient(#daa666, skyblue);
     padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 6px 4px;
     border-radius: 5px;
     margin: auto;
 }

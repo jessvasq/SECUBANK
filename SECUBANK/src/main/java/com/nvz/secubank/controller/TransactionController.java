@@ -74,7 +74,7 @@ public class TransactionController {
         }
 
         transactionService.makeTransferByEmail(transactionDto);
-        return "redirect:/users/account";
+        return "redirect:/users/accounts";
     }
 
     /**

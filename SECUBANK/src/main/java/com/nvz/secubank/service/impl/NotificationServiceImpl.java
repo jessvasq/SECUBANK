@@ -23,7 +23,7 @@ import java.util.List;
 @Transactional
 public class NotificationServiceImpl implements NotificationService {
 
-    static final BigDecimal setLimit = new BigDecimal(100);
+    static final BigDecimal setLimit = new BigDecimal(1000);
 
     @Autowired
     private NotificationRepository notificationRepository;
@@ -100,7 +100,7 @@ public class NotificationServiceImpl implements NotificationService {
         for (Account account : accounts) {
             //check if the balance of an account is below the limit
             if (account.getBalance().compareTo(setLimit) < 0 ){
-                String lowBalanceMsg = String.format("SecuBank: Low Balance Alert: %s, Your %s account", account.getBalance(), account.getAccountType().toString());
+                String lowBalanceMsg = String.format("SecuBank Low Balance Alert: %s account has a balance of $ %s",  account.getAccountType().toString(), account.getBalance());
 
                 //generate notification
                 Notification notification = new Notification();
