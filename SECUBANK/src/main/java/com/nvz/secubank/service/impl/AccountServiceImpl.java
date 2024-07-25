@@ -56,12 +56,11 @@ public class AccountServiceImpl implements AccountService {
             throw new UsernameNotFoundException("User not found with email: " + accountDto.getUserEmail());
         }
 
-        String uniqueAccNumber = generateAccountNumber();
+        String randomAccountNumber = generateAccountNumber();
 
         // Create a new Account entity
         Account account = new Account();
-        account.setAccountNumber(uniqueAccNumber);
-        System.out.println("Generated account number: " + uniqueAccNumber);
+        account.setAccountNumber(randomAccountNumber);
         account.setBalance(accountDto.getBalance());
         account.setCurrency(accountDto.getCurrency());
 
@@ -85,11 +84,6 @@ public class AccountServiceImpl implements AccountService {
         logger.info("Account successfully added for user email: {}", accountDto.getUserEmail());
     }
 
-    /**
-     * Helper method to generate a unique account number
-     * Method looks by account number ensuring that the account number is unique
-     * @return account number
-     */
     public String generateAccountNumber() {
         String randomAccountNumber;
         Account accountObj;
@@ -148,9 +142,16 @@ public class AccountServiceImpl implements AccountService {
         return convertEntityToDto(accountRepository.findById(accountId).get());
     }
 
+
+
     @Override
     public Account getAccountByAccountNumber(String accountNumber) {
         return accountRepository.findAccountByAccountNumber(accountNumber);
+    }
+
+    @Override
+    public Account getAccountByID(Long accountId) {
+        return accountRepository.findAccountByAccountId(accountId);
     }
 
     /**

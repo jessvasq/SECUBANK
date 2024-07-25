@@ -45,6 +45,12 @@
                     <h4>Routing Number</h4>
                     <h4 class="acc_info" >674116</h4>
                 </div>
+                <div th:if="${accountDto.accountType.toString() == 'CHECKING'}">
+                    <form  method="POST" th:action="@{/users/card/{id}(id=${accountDto.accountId})}" th:object="${card}">
+                            <button class="activate_btn"> <a> Activate Card </a></button>
+                    </form>
+                </div>
+                <button th:if="${accountDto.accountType.toString() == 'CHECKING'}" class="activate_btn1"> <a th:href="@{/users/card/{id}(id=${accountDto.accountId})}"> See Details </a></button>
             </div>
 
             <div class="section2_container 1">

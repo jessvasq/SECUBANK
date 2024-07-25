@@ -3,38 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>SECUBANK</title>
+    <link rel="stylesheet" th:href="@{/css/card.css}" href="/static/css/home.css">
+    <script type="text/javascript" src="/js/load_nav_footer.js"  th:src="@{/js/load_nav_footer.js}" defer></script>
 </head>
+
+<div id="navbar"></div>
 <body>
-    <h1>Create New Card</h1>
-    <form th:action="@{/users/card}" th:object="${card}" method="POST">
-        <div>
-            <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" th:field="*{cardNumber}" placeholder="Enter card number" />
+<div class="card_container">
+    <section class="section1">
+        <div style="margin: 20% 0 auto 0">
+        <h1 style="text-align: right; margin-right: 30px">Just use your SecuBank Mastercard</h1>
+        <p style="text-align: right; margin: 30px; font-size: 20px">Consectetur velit primis neque id lacinia primis magnis. Phasellus gravida sociosqu dolor maecenas aenean pharetra nam. Inceptos proin habitasse penatibus senectus, ullamcorper mollis erat.  </p>
+            <p style="text-align: left; margin: 30px; margin-top: 140px; font-size: 20px">Consectetur velit primis neque id lacinia primis magnis. Phasellus gravida sociosqu dolor maecenas aenean pharetra nam. Inceptos proin habitasse penatibus senectus, ullamcorper mollis erat.  </p>
+        </div>
+    </section>
+
+    <section class="section2">
+
+
+        <div class="acc_card2">
+            <h1 style="text-align: right">SECUBANK</h1>
+                <h1 style="font-weight: bolder; text-shadow: #daa666 1px 0 10px; letter-spacing:.3rem; padding-left: 10px" th:text="${cardDetails.cardNumber}"></h1>
+                <h2 style="font-weight: bold; margin-top: 0; padding-left: 10px" th:text="${cardDetails.cardHolderName}"></h2>
+
+                <h3 class="acc_info" style=" text-align: right; color: #333333" th:text="${cardDetails.expirationDate}"></h3>
+                <h3 class="acc_info" style=" text-align: right; color: #333333" th:text="${cardDetails.securityCode}"></h3>
+
+                <h3 class="acc_info" style="text-align: right" th:text="${cardDetails.cardType}"></h3>
+                <h2 style="font-weight: bolder; text-align: right">VISA</h2>
+
         </div>
 
-<!--        <div>-->
-<!--            <label for="securityCode">Card Number:</label>-->
-<!--            <input type="text" id="securityCode" th:field="*{securityCode}" placeholder="Enter security code" />-->
-<!--        </div>-->
+            <div style="margin-top: 0; font-size: 12px">
+                <h2 style="text-align: center; margin-top: 10px">Account Details: </h2>
+                <h2 class="acc_info" style=" margin-top: 4px; letter-spacing:.1rem; text-align: center" th:text="${cardDetails.account.accountNumber}"></h2>
+                <h4 class="acc_info" style="margin-top: 0; color: darkgreen; text-align: center" th:text="${cardDetails.status}"></h4>
+            </div>
 
-        <div>
-            <label for="cardType">Account Type:</label>
-            <select id="cardType" th:field="*{cardType}">
-                <option value="" disabled selected>Select account type</option>
-                <option th:value="DEBIT">Debit</option>
-                <option th:value="CREDIT">Credit</option>
-            </select>
-            <div th:if="${#fields.hasErrors('cardType')}" th:errors="*{cardType}">Select card type</div>
-        </div>
+    </section>
+</div>
 
-        <div>
-            <label for="accountNumber">Account Number:</label>
-            <input type="text" id="accountNumber" th:field="*{accountNumber}" placeholder="Enter associated account ID" />
-        </div>
-
-        <div>
-            <button type="submit">Create Card</button>
-        </div>
-    </form>
+<div id="footer"></div>
 </body>
 </html>

@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
         //findById returns an Optional<User>, therefore we use .orElse to return null if the user is not found
           User user = userRepository.findByUserId(userId);
           user.setUserName(userDto.getUserName());
-          user.setEmail(userDto.getEmail());
+//          user.setEmail(userDto.getEmail());
 
 //          //encode password if it has changed
 //        if (!user.getPassword().equals(userDto.getPassword())) {

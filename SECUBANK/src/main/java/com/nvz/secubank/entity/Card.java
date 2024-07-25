@@ -33,7 +33,7 @@ public class Card {
     private LocalDate issueDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(length=15, nullable=false)
+    @Column(length=15)
     private CardType cardType;
 
     @Enumerated(EnumType.STRING)

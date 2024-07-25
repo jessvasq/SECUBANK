@@ -1,6 +1,7 @@
 package com.nvz.secubank.controller;
 
 import com.nvz.secubank.dto.AccountDto;
+import com.nvz.secubank.dto.CardDto;
 import com.nvz.secubank.entity.Transaction;
 import com.nvz.secubank.service.AccountService;
 import com.nvz.secubank.service.TransactionService;
@@ -101,6 +102,11 @@ public class AccountController {
         model.addAttribute("accountDto", accountDto);
         List<Transaction> transactions = transactionService.getTransactionsByAccountId(id);
         model.addAttribute("transactions", transactions);
+
+        ///testing
+        CardDto card = new CardDto();
+        model.addAttribute("card", card);
+
         return "account";
     }
 }

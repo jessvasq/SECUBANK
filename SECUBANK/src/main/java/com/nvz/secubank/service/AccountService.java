@@ -17,4 +17,5 @@ public interface AccountService {
     List<AccountDto> getAccountsByEmail(String email);
     AccountDto getAccountById(Long accountId);
     Account getAccountByAccountNumber(String accountNumber);
+    Account getAccountByID(Long accountId);
 }

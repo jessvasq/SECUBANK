@@ -1,0 +1,43 @@
+html, body{
+    height: 100%;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card_container{
+    flex: 1;
+    width: 90%;
+    margin: 90px auto 0 auto;
+    display: flex;
+}
+
+.section1{
+    flex: 1.5;
+    background-color: #3b5455;
+    border-radius: 10px;
+    color: white;
+}
+
+.acc_card2{
+    width: 40%;
+    height: fit-content;
+    box-shadow: none;
+    background: radial-gradient(#daa666, skyblue);
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.section2{
+    flex: 2;
+    margin: auto;
+}
+
+.acc_card2 h2, h3{
+    margin: 0;
+}

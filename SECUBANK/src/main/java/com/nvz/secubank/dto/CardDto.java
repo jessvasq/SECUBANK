@@ -23,7 +23,7 @@ import java.time.YearMonth;
 @AllArgsConstructor
 public class CardDto {
     private Long cardId;
-    @NotEmpty(message = "Please enter card number")
+//    @NotEmpty(message = "Please enter card number")
     private String cardNumber;
     private String expirationDate;
     private String securityCode;
@@ -31,7 +31,7 @@ public class CardDto {
     private String cardHolderName;
     private LocalDate issueDate;
 
-    @NotNull(message = "Please select Card Type")
+//    @NotNull(message = "Please select Card Type")
     private CardType cardType;
 
     private CardStatus status = CardStatus.ACTIVE;

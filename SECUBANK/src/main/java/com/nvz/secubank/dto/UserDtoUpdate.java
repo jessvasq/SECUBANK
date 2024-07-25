@@ -20,8 +20,8 @@ public class UserDtoUpdate {
     @NotEmpty(message = "Please create a username")
     private String userName;
     @NotEmpty(message = "Email should not be empty")
-    @Email
-    private String email;
+//    @Email
+//    private String email;
 //    @NotEmpty(message = "Please enter a password")
 //    private String password;
     @NotEmpty(message = "Please enter your address")
