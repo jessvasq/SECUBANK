@@ -2,21 +2,21 @@
 Banking application designed to provide users with secure, convenient, and efficient management of their financial transactions. It offers a range of features aimed at enhancing user experience and financial control.
 
 ## Features
-### Account Management
+#### Account Management
 - Set up and manage account
 - View account balances and transaction history
 - Manage multiple accounts (checking, savings, credit)
 
-### Transactions
+#### Transactions ####
 - Perform transfers between accounts and to other banks
 - View transaction details and receipts
 
-### Security
+#### Security
 - Secure Login
 - Real-time transaction alerts
 - Option to lock/unlock cards 
 
-### User Experience
+#### User Experience
 - Intuitive and user-friendly interface
 - Customizable dashboard and notifications
 
