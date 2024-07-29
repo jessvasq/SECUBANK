@@ -31,3 +31,6 @@ Banking application designed to provide users with secure, convenient, and effic
 
 ## Wireframes
 ![Screenshot 2024-07-24 102403](https://github.com/user-attachments/assets/5a7167cf-169a-4948-870b-213e6b846eff)
+
+### EER Diagram ###
+![SecuBank EER_](https://github.com/user-attachments/assets/21192f63-49e9-4039-98c2-5b5e75c23867)
