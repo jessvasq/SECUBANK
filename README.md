@@ -23,11 +23,13 @@ Banking application designed to provide users with secure, convenient, and effic
 ## Technologies used 
 - Java
 - Spring Boot
-- Thymeleaf
 - Spring Security
+- MySQL
+- Thymeleaf
 - HTML
 - CSS
-- MySQL
+- Figma
+- Jira
 
 ## Wireframes
 ![Screenshot 2024-07-24 102403](https://github.com/user-attachments/assets/5a7167cf-169a-4948-870b-213e6b846eff)
