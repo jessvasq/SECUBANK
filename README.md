@@ -31,7 +31,7 @@ Banking application designed to provide users with secure, convenient, and effic
 - Figma
 - Jira
 
-## Wireframes
+## Screenshots
 ![Screenshot 2024-07-24 102403](https://github.com/user-attachments/assets/5a7167cf-169a-4948-870b-213e6b846eff)
 
 ### EER Diagram ###
